@@ -4,41 +4,68 @@
 
 ## 风格
 
-1. 安装插件 `Material Theme UI  ` ，安装后重起phpstorm
+1. 安装插件 `Material Theme UI  ` ，安装后重起软件
 2. `Tools -> Material Theme ` 中选择喜欢的样式就可以了
 
-## 快捷键
+## 快捷键【window环境】
 
 ![1554111041](../assets/tools/20190401175506.jpg) 
 
-1. 全屏幕快捷键 
+全屏幕快捷键 
 
    ```
    Keymap>Main menu>View>Toggle Distraction Free mode 为 f11健
    Keymap>Main menu>View>Toggle Full Screen mode 为 alt f11健
    ```
 
-2. `Keymap>Tool Windows>Database`  数据库管理 `alt+shift+d`
+#### [查询]
 
-3. `Terminal` 快捷键就使用默认的 `alt+shift+t`
 
-4. `Remote Host` 远程主机面板 `alt+shift+h`
+| 按 Press               | 功能 Function                                          |
+| ---------------------- | ----------------------------------- |
+| Ctrl + N               | 查找类                              |
+| Ctrl + Shift + N       | 全局搜索文件 ,优先文件名匹配的文件    |
+| Ctrl + Shift + ALT + N | 查找php类名/变量名 ,js方法名/变量名, css 选择器        |
+| CIRL + B   | 找变量的来源，跳到变量申明处 (Ctrl +  鼠标单击 也可以) |
+| Ctrl + G   | 定位行，跳转行 |
+| Ctrl + F   | 在当前窗口查找文本 |
+| Ctrl + Shift + F   | 在指定路径查找文本字符 |
+| Ctrl + E   | 最近打开的文件 |
+| Ctrl + ALT←/→   | 返回上次编辑的位置 |
+| ALT + ←/→   | 切换代码视图，标签切换 |
+| ALT + ↑/↓   | 在方法间快速移动定位 |
+| Ctrl  +  '-/ + '      | 可以折叠项目中的任何代码块,包括htm中的任意nodetype=3的元素，function,或对象直接量等等。它不是选中折叠，而是自动识别折叠 |
+| Ctrl  + F12  | 文件结构弹出 类似 ALT  +  7 |
+| Ctrl + ALT + F12  | 资源管理器打开文件夹，跳转至当前文件在磁盘上的位置 |
+| Ctrl + [] |	光标移动到{}[]开头或结尾位置	|
 
-5. `Run Command` 切换命令控制台 `alt+shift+m` 
+#### [编辑]
 
-6. `File Structure` 查找文件定义的方法 `alt+shift+j`  
+| 按 Press             | 功能 Function                       |
+| -------------------- | ----------------------------------- |
+| Ctrl + Q | 快速文档查询  |
+| Ctrl + Shift + i   | 快速查看变量或方法定义源 , 也可以鼠标按住 + Ctrl    |
+| Ctrl + R     | 当前窗口替换文本   |
+| Ctrl + Shift + R    | 在指定路径替换文本 |
+| Ctrl + ALT + T   | 把选中的代码放在TRY{} IF{} ELSE{} 里 |
+| Ctrl + Shift + J   | 多行合成一行，所有多余的字符(空格，引号和加号)被去掉了 |
+| Ctrl + Shift + U   | 选中的字符大小写转换 |
+| Ctrl + W   | 块状选中代码，连续按会有其他效果 Ctrl + Shift + W 减少当前选择到以前的状态 |
+| Ctrl + Shift + []   | 直接选中块代码 = Ctrl + W 按好几下 |
 
-7. ` Navigate>File` 查找文件 `alt+p` 
 
-8. ` Recent Files` 查找文件定义的方法 `alt+e`  
+#### [自动代码]
 
-9. `Editor Tabs>Close` 关闭文件 `alt+w`  
+| 按 Press             | 功能 Function                       |
+| -------------------- | ----------------------------------- |
+| Ctrl + I | 实现方法(构造函数)  |
+| Ctrl + J | 自动代码提示，自动补全    |
+| ALT + Enter     | 导入包,自动修正   |
+| Ctrl + ALT + L   | 格式化代码 |
+| Ctrl + ALT + I   | 自动缩进 |
+| Ctrl + Shift + enter   | (智能完善代码 如if()) |
+| Ctrl + P   | 方法参数提示，显示默认参数 |
 
-10. `File>Save All` 保存全部 `alt+s`  
-
-11. `Code>Generate` 快捷创建 `alt+n`
-
-> 使用 `MAC`的同学习惯于  `Command` 键，所以本套按键设置大量定义了 `alt` 键 
 
 ## bootstrap
 
