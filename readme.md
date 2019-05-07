@@ -10,5 +10,5 @@
 
 文章来源记录：
 
-- [向军大叔](http://www.aoxiangjun.com/)（网上听他讲的课，他的课件总结到位，因此局部笔记是在此基础上进行修改）
+- [向军大叔](http://www.aoxiangjun.com/)
 

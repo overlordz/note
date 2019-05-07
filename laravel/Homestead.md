@@ -35,7 +35,7 @@ metadata.json 内容如下：
 
 ```
 {
-    "name": "koala/homestead",
+    "name": "laravel/homestead",
     "versions": 
     [
         {
@@ -56,10 +56,6 @@ metadata.json 内容如下：
 ```
 运行以下命令进入 Homestead 管理脚本的目录里：
 > cd Homestead
-
-修改下面步骤生成的配置文件 E:\vagrant\homestead\homestead\scripts\homestead.rb 以下内容
-
-config.vm.box = settings['box'] ||= 'koala/homestead'
 
 使用以下命令创建新的虚拟机：
 > vagrant up
@@ -172,3 +168,32 @@ vagrant status
 > 用户名和密码是homestead／secret。
 
 PHP程序连接（虚拟机中连接）端口为 3306
+
+
+### Redis客户端连接
+
+修改redis配置文件（默认路径/etc/redis/redis.conf）
+
+    requirepass yourpassword ----设置任何你想要的密码
+    bind 127.0.0.1 修改为 bind 0.0.0.0
+
+修改完配置后重启redis，执行命令
+    
+    sudo service redis restart
+
+查看修改情况
+
+    $# ps -ef | grep redis
+
+修改Homestead.yaml文件端口转发，然后执行vagrant reload --provision重启虚拟机
+
+    ports:
+          - send: 63790
+            to: 6379
+
+此时使用redis desktop manager连接redis
+
+    连接设置：
+        名字： homestead
+        地址: 192.168.10.10 : 63790
+        验证：homestead
