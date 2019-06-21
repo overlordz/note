@@ -19,6 +19,8 @@ box下载地址：https://vagrantcloud.com/laravel/boxes/homestead/versions/7.1.
 
 ---
 
+
+
 #### 本地安装
 
 **方式一**
@@ -100,6 +102,8 @@ clone管理脚本
 # vagrant up
 ```
 
+
+
 ### SSH 秘钥登录
 
 ##### 用于实现 SSH 免密码登录 修改 Homestead.yaml 文件以下内容：
@@ -110,9 +114,13 @@ keys:
     - C:/Users/mengy/.ssh/id_rsa.pub
     
 生成 key的方法，在文件里调出Git Bash Here
+
     ssh-keygen -t rsa -C "youQQ@qq.com"
+    
     #后面一真按enter键，设置密码
 ```
+
+
 
 ### 配置共享文件夹
 
@@ -124,8 +132,11 @@ folders:
       to: /home/vagrant/code
       
 # map 对应的是我们本机的文件夹
-* to 对应的是 Homestead 上的文件夹
+# to 对应的是 Homestead 上的文件夹
+# type 这样可以提升加载速度
 ```
+
+
 
 ### vagrant命令
 
@@ -146,9 +157,13 @@ vagrant destroy
 vagrant status
 ```
 
+
+
 ### homestead 配置修改要重新加载
 
     # vagrant reload --provision
+
+
 
 ### 通过 SSH 连接
 
@@ -161,6 +176,7 @@ vagrant status
 > 用户名和密码都是vagrant
 
 
+
 ### 数据库
 
 要从主机的数据库客户端连接到 MySQL，就连接到 127.0.0.1和端口 3306 (MySQL) 。
@@ -168,6 +184,7 @@ vagrant status
 > 用户名和密码是homestead／secret。
 
 PHP程序连接（虚拟机中连接）端口为 3306
+
 
 
 ### Redis客户端连接
@@ -197,3 +214,51 @@ PHP程序连接（虚拟机中连接）端口为 3306
         名字： homestead
         地址: 192.168.10.10 : 63790
         验证：homestead
+
+
+
+## 响应缓慢
+
+解决WINDOS系统下Homestead运行缓慢的问题
+
+> 一定要先备份
+
+首先，命令行进入 Homestead 启动 vagrant
+
+```
+> cd ~/Homestead && vagrant up
+```
+
+然后运行安装命令（如果下载失败可能被墙了）
+
+```
+$ vagrant plugin install vagrant-winnfsd
+```
+
+修改文件1：`homestead/scripts/homestead.rb`
+
+查找此段代码（可能略有不同），替换为以下内容
+
+```
+if settings.include? 'folders'
+  settings["folders"].sort! { |a,b| a["map"].length <=> b["map"].length }
+
+  settings["folders"].each do |folder|
+    config.vm.synced_folder folder["map"], folder["to"], 
+    id: folder["map"],
+    :nfs => true,
+    :mount_options => ['nolock,vers=3,udp,noatime']
+  end
+end
+```
+
+文件2：`Homestead.yaml`
+
+```
+folders:
+    - map: ~/Code
+      to: /home/vagrant/Code
+      type: nfs
+```
+
+重启 Homestead 使配置文件生效，大功告成。
