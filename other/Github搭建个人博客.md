@@ -9,8 +9,8 @@
 ##### # 准备工作
 
 ```javascript
-1. 有一个github账号，没有的话去注册一个；
-2. 安装了nodejs、npm，并了解一些相关基础知识；
+1. 有一个github账号；
+2. 安装了nodejs、npm；
 ```
 
 
@@ -29,6 +29,57 @@
    ![github201906191441](../assets/other/github201906191443.png)
 
 
+
+
+##### # Hexo主题更换
+
+1. 选择Next主题，[点击跳转](http://theme-next.iissnan.com/getting-started.html)
+
+2. 安装主题
+
+```
+$ cd your-hexo-site
+$ git clone https://github.com/iissnan/hexo-theme-next themes/next
+```
+
+3. 更改配置文件
+
+```
+站点配置文件：
+_config.yml
+	theme: next
+	language: zh-Hans
+	author: 作者名称
+	description： 描述
+ 
+主题配置文件 
+next/_config.yml
+	(放置在 source/images/ 目录下)
+	avatar: /images/avatar.png
+	主题
+	scheme: Pisces
+```
+
+4. 创建文章和新建页面
+
+```
+hexo new "文章名" #新建文章
+hexo new page "页面名" #新建页面
+```
+
+5. 编辑文章
+
+```
+文章路径：source/_posts/hello-world.md
+```
+
+6. 删除文章
+
+在上面编辑路径中删除相对应的文件
+
+7. 启动服务
+
+hexo s 或 hexo server
 
 
 ##### # 绑定阿里云域名（其他原理相同）
@@ -70,4 +121,10 @@ www： 解析后的域名为www.baidu.com
 *： 泛解析，匹配其他所有域名 *.baidu.com
 二级域名： 如：abc.qcloud.com，填写abc
 ```
+
+
+
+
+
+> PS:发现一个写Hexo文章比较全的，想看更具体的请点击[直接跳转](<https://www.simon96.online/2018/10/12/hexo-tutorial/>)！
 
