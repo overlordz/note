@@ -10,11 +10,11 @@
 
 ## vim 常用命令速查图
 
-![command](../assets/linux/vim/command.png)
+![command](../../assets/linux/vim/command.png)
 
 ## vim 键盘对应位
 
-![command](../assets/linux/vim/keyboard.png)
+![command](../../assets/linux/vim/keyboard.png)
 
 
 
