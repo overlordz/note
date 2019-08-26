@@ -1,3 +1,5 @@
+> Laravel 版本号：5.8
+
 ## Laravel 使用Vue的问题
 
 #### npm run dev 出现失败

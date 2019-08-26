@@ -74,7 +74,7 @@ wget的命名规则是取最后一个"/"后面的内容，文件重命名
 
 5. 登录ActiveMQ管控台  (用户名和密码都是：admin)
 
-> http://192.168.1.200:8061/admin/
+> http://192.168.1.208:8061/admin/
 
 
 
@@ -169,9 +169,7 @@ $stomp->subscribe($queue);
  
 while(true) {
     //判断是否有读取的信息
-    if($stomp->hasFrame()) {
-        $frame = $stomp->readFrame();
- 
+    if($stomp->hasFrame() && $frame = $stomp->readFrame()) {
         $data = json_decode($frame->body, true);
         // 逻辑处理---
         var_dump($data); 

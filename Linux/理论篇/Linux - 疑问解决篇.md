@@ -8,7 +8,7 @@ yum install net-tools
 
 
 
-#### #执行bash脚本文件提示：/bin/bash^M: bad interpreter: 没有那个文件或目录？
+#### # 执行bash脚本文件提示：/bin/bash^M: bad interpreter: 没有那个文件或目录？
 
 ```
 原因：window和linux的文件格式的不兼容
@@ -80,7 +80,7 @@ The complete list is QQ
 
 
 
-#### #Linux中/dev/null与2>&1 讲解
+#### # Linux中/dev/null与2>&1 讲解
 
 首先先来看下几种标识的含义：
 
