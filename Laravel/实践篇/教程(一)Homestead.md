@@ -6,7 +6,7 @@ box下载地址：https://vagrantcloud.com/laravel/boxes/homestead/versions/7.1.
 
 > vagrant box add laravel/homestead
 
-![image](../assets/laravel/20190401162754.png)
+![image](../../assets/laravel/20190401162754.png)
 
 会有四个选项让你选择。这里我们用的varant box 就选3
 
@@ -27,7 +27,7 @@ box下载地址：https://vagrantcloud.com/laravel/boxes/homestead/versions/7.1.
 
 步骤一：
 
-![20190403175510](../assets/laravel/20190403175510.png)
+![20190403175510](../../assets/laravel/20190403175510.png)
 
 ```
 > vagrant box add metadata.json

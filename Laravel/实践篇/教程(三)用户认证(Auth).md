@@ -5,6 +5,10 @@
 ##### Laravel提供快速搭建认证所需的所有路由和视图
 
 	php artisan make:auth
+	
+	执行数据创建：
+	
+	php artisan migrate
 
 
 
