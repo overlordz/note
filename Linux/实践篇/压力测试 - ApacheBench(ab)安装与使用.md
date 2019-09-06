@@ -1,8 +1,23 @@
 
-#### 介绍
+### 介绍
 
 – Apache的ab命令模拟多线程并发请求，测试服务器负载压力
 – 可用于Nginx、Apache、IIS等Web服务器的压力测试。
+
+### Centos安装方式：
+
+```
+# yum -y install httpd-tools
+```
+
+
+
+### Ubuntu安装方式：
+
+```
+sudo apt-get install apache2-utils
+```
+
 
 
 #### 使用格式
@@ -24,11 +39,7 @@ bosity] [ -V ] [ -w ] [ -x <table>-attributes ] [ -X proxy[:port]  ]  [
 ab [参数] http[s]://hostname[:port]/path
 ```
 
-####  安装工具
 
-```
-yum -y install httpd-tools
-```
 
 #### 基本使用范例
 

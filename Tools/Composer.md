@@ -136,3 +136,25 @@ composer require overlordz/note
 ```
 
 至些我们已经完成了，直接在 overlordz/note 目录中开发就可以了，而非 `vendor/overlordz/module` 目录。
+
+
+
+### 常用命令
+
+```bash
+# 安装包,根据composer.json
+composer install;
+# 更新包,升级composer.json的所有代码库(如果能升级的话)
+composer update;
+# 搜索包,搜索composer可用的包
+composer search 关键字;
+# 引入包,会在composer.json新增一条包配置,并下载该代码包 
+composer require 包名称;
+# 删除包
+composer remove 包名称;
+# 生成当前命名空间与类库文件路径的一个映射，运行时加载会直接读取这个映射，加快文件的加载速度。
+composer dump-autoload;
+# 更新命名空间映射
+composer dumpautoload
+```
+

@@ -262,3 +262,26 @@ folders:
 ```
 
 重启 Homestead 使配置文件生效，大功告成。
+
+
+
+## PHP安装扩展
+
+### Swoole扩展
+
+#### Pecl 安装
+
+```
+# pecl install swoole
+# 查看php.ini位置
+# php -i | grep php.ini
+# 往php.ini配置文件添加
+# extension=swoole.so
+# 重启PHP服务(根据版本号)
+# sudo service php7.3-fpm status
+```
+
+#### 
+
+**Tips：查看Linux实践篇**
+
