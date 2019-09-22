@@ -51,7 +51,7 @@ https://packagecontrol.io/packages/Theme%20-%20Spacegray
 2. Choose `Package Control: Install Package`
 3. Find `A File Icon` and hit `Enter`
 
-##插件
+## 常用插件
 
 1. emmet：快速编写html/css https://docs.emmet.io
 2. docblockr：代码注释提示插件 https://packagecontrol.io/packages/DocBlockr
@@ -89,7 +89,7 @@ npm install -g less-plugin-autoprefix
 设置好之后，在命令行中输入lessc，如果有如下提示则表示设置成功：
 
 ```
-C:\Users\hdxj>lessc
+C:\Users\koala>lessc
 lessc.wsf: no input files
 Usage:
 Single file: cscript //nologo lessc.wsf input.less [output.css] [-compre
@@ -120,6 +120,8 @@ Preferences → Key Bindings – User
 ]
 ```
 
+
+
 # 函数
 
 #### 快速查找
@@ -135,6 +137,8 @@ Preferences → Key Bindings – User
 #### 函数跟踪
 
 鼠标移动到函数上面，会自动显示方法的文件列表。或按 f12 键显示函数的文件列表
+
+
 
 ## 快捷键
 
@@ -165,7 +169,10 @@ Preferences → Key Bindings – User
 | Ctrl+Alt+↑       | 向上添加多行光标，可同时编辑多行                             |
 | Ctrl+Alt+↓       | 向下添加多行光标，可同时编辑多行                             |
 
+
+
 #### [编辑类]
+
 | 按 Press               | 功能 Function  	|
 | ---------------------- | ----------------------------------- |
 | Ctrl+J 			| 	合并选中的多行代码为一行 |
@@ -192,7 +199,10 @@ Preferences → Key Bindings – User
 | Ctrl+Shift+A    	| 	选择当前标签前后，修改标签用的 |
 | Ctrl+Shift+↑/↓  	| 	可替换行 |
 
+
+
 #### [搜索类】
+
 | 按 Press     | 功能 Function  |
 | ------------ | -------------- |
 | Ctrl+F       | 搜索查找关键字 |
@@ -204,7 +214,10 @@ Preferences → Key Bindings – User
 | Ctrl+Shift+P 	 |	打开命令面板 |
 | Esc 			 |	退出光标多行选择，退出搜索框，命令框等 |
 
-#### [显示类
+
+
+#### 显示类
+
 | 按 Press      | 功能 Function                            |
 | ------------- | ---------------------------------------- |
 | Ctrl+W        | 关闭当前打开文件                         |
