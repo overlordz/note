@@ -20,13 +20,29 @@ $ php -r "unlink('composer-setup.php');"
 
 使用composer安装软件时是从远程服务器下载的，但国内用户访问国外网站会过慢或不能访问。有些机构将国外的软件同步到了国内服务器。我们将composer下载的服务器指向到这个国内服务器，就可以实现快速下载软件了。
 
+
+
 ### 国内仓库
 
-参考网址 `https://pkg.phpcomposer.com/` ，命令行执行以下指令完成配置(linux需要使用sudo)
+```
+# 阿里云
+> 使用说明：https://mirrors.aliyun.com/composer/
+> composer config -g repo.packagist composer https://mirrors.aliyun.com/composer/ 
 
+# 腾讯云
+> composer config -g repos.packagist composer https://mirrors.cloud.tencent.com/composer/ 
+
+# phpcomposer
+> composer config -g repo.packagist composer https://packagist.phpcomposer.com
+
+# cnpkg
+> composer config -g repos.packagist composer https://php.cnpkg.org
+
+# 交通大学
+> composer config -g repos.packagist composer https://packagist.mirrors.sjtug.sjtu.edu.cn
 ```
-composer config -g repo.packagist composer https://packagist.phpcomposer.com
-```
+
+
 
 ### 国外仓库
 
@@ -50,6 +66,33 @@ composer config -g repo.packagist composer https://packagist.phpcomposer.com
 ```
 composer config -g repo.packagist composer https://packagist.org
 ```
+
+
+
+## 镜像用法
+
+**系统全局配置**
+
+```
+composer config -g repo.packagist composer https://packagist.phpcomposer.com
+```
+
+**单个项目配置**
+
+```
+composer config repo.packagist composer https://packagist.phpcomposer.com
+```
+
+**解除镜象**
+
+```
+#全局
+composer config -g --unset repos.packagist
+#项目
+composer config --unset repos.packagist
+```
+
+
 
 ## 安装扩展包
 

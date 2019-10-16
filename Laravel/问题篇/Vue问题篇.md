@@ -11,7 +11,7 @@
 
 1、删掉node_modules目录，重新执行npm install  或 yarn install
 
-2、删除 package.json 中的 cross-env，其中对应的“devDependencies”也要删掉。
+2、删除 package.json 中的 cross-env，其中“devDependencies”对应的cross-env也要删掉。
 
 3、npm run watch-poll 执行查看
 
@@ -22,6 +22,10 @@
 1、执行 `npm run watch-poll` 的时候如果提示 “Running: yarn add vue-template-compiler --dev --production=false Running: yarn add vue-template-compiler --dev --production=false“，就使用 `yarn add vue-template-compiler --dev --production=false --no-bin-links` 命令安装
 
 
+
+**备注：**
+
+建议放弃在windows 环境直接调用npm run  dev  ，错误调试多
 
 
 
