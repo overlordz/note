@@ -30,7 +30,7 @@ xdebug网站提供一个自动分析你系统对应的xdebug版本的页面,网�
 
 检查是否安装成功： 
 
->  #  php -m | grep xdebug
+>  #php -m | grep xdebug
 
 
 
@@ -94,3 +94,4 @@ xdebug.remote_log = /data/web/logs/xdebug.log
 
 - https://blog.csdn.net/donglynn/article/details/69808663
 - <https://segmentfault.com/a/1190000014942730>
+
