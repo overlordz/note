@@ -54,22 +54,40 @@ https://packagecontrol.io/packages/Theme%20-%20Spacegray
 ## 常用插件
 
 1. emmet：快速编写html/css https://docs.emmet.io
+
 2. docblockr：代码注释提示插件 https://packagecontrol.io/packages/DocBlockr
+
 3. sideBarEnhancements ：扩展左侧面板 https://packagecontrol.io/packages/SideBarEnhancements
+
 4. SideBarTools：扩展左侧面板 https://packagecontrol.io/packages/SideBarTools
+
 5. AdvancedNewFile：快速创建文件 ，使用ctrl+alt+n就可以快速创建文件
+
 6. Local History：本地历史记录 https://packagecontrol.io/packages/Local%20History
+
 7. Laravel 5 Artisan：laravel命令行插件 https://packagecontrol.io/packages/Laravel%205%20Artisan 按 ctrol+shift+p 搜索并执行命令
+
 8. Laravel 5 Snippets：laravel代码片段 https://packagecontrol.io/packages/Laravel%205%20Snippets
+
 9. Laravel Blade Highlighter：laravel blade模板高亮 https://packagecontrol.io/packages/Laravel%20Blade%20Highlighter
+
 10. Blade Snippets：blade 代码片段 https://packagecontrol.io/packages/Blade%20Snippets
+
 11. Laravel Blade AutoComplete：自动识别blade父级模板内容 https://packagecontrol.io/packages/Laravel%20Blade%20AutoComplete
+
 12. Bootstrap 3 Snippets：bootstrap 代码片段 https://github.com/JasonMortonNZ/bs3-sublime-plugin
+
 13. Bootstrap 3 Autocomplete：bootstrap样式提示 https://packagecontrol.io/packages/Bootstrap%203%20Autocomplete
+
 14. Bootstrap 4 Snippets：bootstrap代码提示 https://packagecontrol.io/packages/Bootstrap%204%20Snippets
+
 15. Bootstrap 4 Autocomplete：bootstrap4 自动提示：https://packagecontrol.io/packages/Bootstrap%204%20Autocomplete
+
 16. SCSS：scss代码提示 https://packagecontrol.io/packages/SCSS
+
 17. Sass：scss语法高亮 https://packagecontrol.io/packages/Sass
+
+18. 一键格式化html/css/js：<https://blog.csdn.net/weixin_36892106/article/details/80109499>
 
 ## LESS
 
