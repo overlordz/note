@@ -130,7 +130,7 @@ keys:
 folders:
     - map: E:/vagrant/code
       to: /home/vagrant/code
-      
+      type: nfs
 # map 对应的是我们本机的文件夹
 # to 对应的是 Homestead 上的文件夹
 # type 这样可以提升加载速度
@@ -138,7 +138,7 @@ folders:
 
 
 
-### vagrant命令
+### Vagrant命令
 
 ```
 #启动 如果加上 --provision 选项那么添加的新站点会发布到虚拟机上。
@@ -280,8 +280,4 @@ folders:
 # 重启PHP服务(根据版本号)
 # sudo service php7.3-fpm status
 ```
-
-#### 
-
-**Tips：查看Linux实践篇**
 
