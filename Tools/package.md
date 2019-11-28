@@ -206,12 +206,6 @@ class ServerDisposeException extends Exception
 
 ```
 <?php
-/** .-------------------------------------------------------------------
- * |    Author: 向军 <www.aoxiangjun.com>
- * |    WeChat: houdunren2018
- * |      Date: 2018/11/12
- * | Copyright (c) 2012-2019, www.houdunren.com. All Rights Reserved.
- * '-------------------------------------------------------------------*/
 
 namespace Houdunwang\Uploader;
 
@@ -266,15 +260,6 @@ class Uploader
 
 ```
 <?php
-/** .-------------------------------------------------------------------
- * |  Software: [hdcms framework]
- * |      Site: www.hdcms.com
- * |-------------------------------------------------------------------
- * |    Author: 向军 <www.aoxiangjun.com>
- * |    WeChat: houdunren2018
- * |      Date: 2018/11/12
- * | Copyright (c) 2012-2019, www.houdunren.com. All Rights Reserved.
- * '-------------------------------------------------------------------*/
 
 namespace Houdunwang\Uploader\Services;
 
@@ -375,12 +360,6 @@ class OssServer implements ServerInterface
 
 ```
 <?php
-/** .-------------------------------------------------------------------
- * |    Author: 向军 <www.aoxiangjun.com>
- * |    WeChat: houdunren2018
- * |      Date: 2018/11/12
- * | Copyright (c) 2012-2019, www.houdunren.com. All Rights Reserved.
- * '-------------------------------------------------------------------*/
 
 namespace Houdunwang\Uploader;
 
@@ -419,12 +398,6 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
 
 ```
 <?php
-/** .-------------------------------------------------------------------
- * |    Author: 向军 <www.aoxiangjun.com>
- * |    WeChat: houdunren2018
- * |      Date: 2018/11/12
- * | Copyright (c) 2012-2019, www.houdunren.com. All Rights Reserved.
- * '-------------------------------------------------------------------*/
 
 namespace Houdunwang\Uploader;
 
@@ -461,12 +434,6 @@ class Facade extends LaravelFacade
 
 ```
 <?php
-/** .-------------------------------------------------------------------
- * |    Author: 向军 <www.aoxiangjun.com>
- * |    WeChat: houdunren2018
- * |      Date: 2018/11/12
- * | Copyright (c) 2012-2019, www.houdunren.com. All Rights Reserved.
- * '-------------------------------------------------------------------*/
 
 use PHPUnit\Framework\TestCase;
 use Houdunwang\Uploader\Services\OssServer;
@@ -522,12 +489,6 @@ class OssServerTest extends TestCase
 
 ```
 <?php
-/** .-------------------------------------------------------------------
- * |    Author: 向军 <www.aoxiangjun.com>
- * |    WeChat: houdunren2018
- * |      Date: 2018/11/12
- * | Copyright (c) 2012-2019, www.houdunren.com. All Rights Reserved.
- * '-------------------------------------------------------------------*/
 
 use PHPUnit\Framework\TestCase;
 use Houdunwang\Uploader\Exceptions\InvalidParamException;

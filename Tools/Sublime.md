@@ -1,20 +1,14 @@
-# SUBLIME
+# Sublime
 
-Sublime Text 是一个代码编辑器（Sublime Text 2是收费软件，但可以无限期试用），也是HTML和散文先进的文本编辑器。Sublime Text是由程序员Jon Skinner于2008年1月份所开发出来，它最初被设计为一个具有丰富扩展功能的[Vim](https://baike.baidu.com/item/Vim)。
+
 
 Sublime Text具有漂亮的用户界面和强大的功能，并且是一个跨平台的编辑器，同时支持[Windows](https://baike.baidu.com/item/Windows)、[Linux](https://baike.baidu.com/item/Linux)、[Mac OS X](https://baike.baidu.com/item/Mac%20OS%20X)等操作系统。
 
 登录官网下载 https://www.sublimetext.com/
 
-## package control
+## Package Control
 
-增加sublime安装插件的功能package control：（新版sublime 3 已经内置不需要执行了)
-
-```
-import urllib.request,os; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); open(os.path.join(ipp, pf), 'wb').write(urllib.request.urlopen( 'http://sublime.wbond.net/' + pf.replace(' ','%20')).read())
-```
-
-插件网站：https://packagecontrol.io/
+> 插件网站：https://packagecontrol.io/
 
 **操作步骤**
 
@@ -25,7 +19,7 @@ import urllib.request,os; pf = 'Package Control.sublime-package'; ipp = sublime.
 
 ## 风格
 
-风格包网站: https://packagecontrol.io](https://packagecontrol.io/)
+风格包网站:[ https://packagecontrol.io](https://packagecontrol.io/)
 
 风格包: Spacegray：
 
@@ -51,43 +45,37 @@ https://packagecontrol.io/packages/Theme%20-%20Spacegray
 2. Choose `Package Control: Install Package`
 3. Find `A File Icon` and hit `Enter`
 
+
+
 ## 常用插件
 
-1. emmet：快速编写html/css https://docs.emmet.io
+- [Emmet](https://docs.emmet.io)：快速编写html/css
+- [IMESupport](https://packagecontrol.io/packages/IMESupport)：解决输入框不跟随的问题
+- [BracketHighlighter](https://packagecontrol.io/packages/BracketHighlighter)：高亮显示配对括号以及当前光标所在区域
+- [docblockr](https://packagecontrol.io/packages/DocBlockr)：代码注释提示插件 
+- [sideBarEnhancements](https://packagecontrol.io/packages/SideBarEnhancements) ：扩展左侧面板
+- [SideBarTools](https://packagecontrol.io/packages/SideBarTools)：扩展左侧面板 
+- [AdvancedNewFile](https://packagecontrol.io/packages/AdvancedNewFile)：快速创建文件 ，使用ctrl+alt+n就可以快速创建文件
+- [Local History](https://packagecontrol.io/packages/Local%20History)：本地历史记录 
+- [Laravel 5 Artisan](https://packagecontrol.io/packages/Laravel%205%20Artisan )：laravel命令行插件 ，按 ctrol+shift+p 搜索并执行命令
+- [Laravel 5 Snippets](https://packagecontrol.io/packages/Laravel%205%20Snippets)：laravel代码片段 
+- [Laravel Blade Highlighter]( https://packagecontrol.io/packages/Laravel%20Blade%20Highlighter)：laravel blade模板高亮
+- [Blade Snippets](https://packagecontrol.io/packages/Blade%20Snippets)：blade 代码片段 
+- [Laravel Blade AutoComplete](https://packagecontrol.io/packages/Laravel%20Blade%20AutoComplete)：自动识别blade父级模板内容
+- [Bootstrap 3 Snippets](https://github.com/JasonMortonNZ/bs3-sublime-plugin)：bootstrap 代码片段 
+- [Bootstrap 3 Autocomplete](https://packagecontrol.io/packages/Bootstrap%203%20Autocomplete)：bootstrap样式提示 
+- [Bootstrap 4 Snippets](https://packagecontrol.io/packages/Bootstrap%204%20Snippets)：bootstrap代码提示
+- [Bootstrap 4 Autocomplete](https://packagecontrol.io/packages/Bootstrap%204%20Autocomplete)：bootstrap4 自动提示
+- [SCSS](https://packagecontrol.io/packages/SCSS)：scss代码提示
+- [SCSS](https://packagecontrol.io/packages/Sass)：scss语法高亮 
+- [html-css-js prettify](https://packagecontrol.io/packages/HTML-CSS-JS%20Prettify)：一键格式化html/css/js（依赖nodejs）
+- [CTags](https://packagecontrol.io/packages/CTags)：按住Control点击该方法或者对象，即可跳转到定义的地方
+- [DeleteBlankLines](https://packagecontrol.io/packages/DeleteBlankLines)：快速删除空白行
+- [SublimeGit](https://packagecontrol.io/packages/SublimeGit)：git
+- [SublimeTmpl](https://packagecontrol.io/packages/SublimeTmpl)： 快速生成文件模板
+- [ConvertToUTF8](https://packagecontrol.io/packages/ConvertToUTF8)： 支持 GBK, BIG5, EUC-KR, EUC-JP, Shift_JIS 等编码的插件
 
-2. docblockr：代码注释提示插件 https://packagecontrol.io/packages/DocBlockr
 
-3. sideBarEnhancements ：扩展左侧面板 https://packagecontrol.io/packages/SideBarEnhancements
-
-4. SideBarTools：扩展左侧面板 https://packagecontrol.io/packages/SideBarTools
-
-5. AdvancedNewFile：快速创建文件 ，使用ctrl+alt+n就可以快速创建文件
-
-6. Local History：本地历史记录 https://packagecontrol.io/packages/Local%20History
-
-7. Laravel 5 Artisan：laravel命令行插件 https://packagecontrol.io/packages/Laravel%205%20Artisan 按 ctrol+shift+p 搜索并执行命令
-
-8. Laravel 5 Snippets：laravel代码片段 https://packagecontrol.io/packages/Laravel%205%20Snippets
-
-9. Laravel Blade Highlighter：laravel blade模板高亮 https://packagecontrol.io/packages/Laravel%20Blade%20Highlighter
-
-10. Blade Snippets：blade 代码片段 https://packagecontrol.io/packages/Blade%20Snippets
-
-11. Laravel Blade AutoComplete：自动识别blade父级模板内容 https://packagecontrol.io/packages/Laravel%20Blade%20AutoComplete
-
-12. Bootstrap 3 Snippets：bootstrap 代码片段 https://github.com/JasonMortonNZ/bs3-sublime-plugin
-
-13. Bootstrap 3 Autocomplete：bootstrap样式提示 https://packagecontrol.io/packages/Bootstrap%203%20Autocomplete
-
-14. Bootstrap 4 Snippets：bootstrap代码提示 https://packagecontrol.io/packages/Bootstrap%204%20Snippets
-
-15. Bootstrap 4 Autocomplete：bootstrap4 自动提示：https://packagecontrol.io/packages/Bootstrap%204%20Autocomplete
-
-16. SCSS：scss代码提示 https://packagecontrol.io/packages/SCSS
-
-17. Sass：scss语法高亮 https://packagecontrol.io/packages/Sass
-
-18. 一键格式化html/css/js：<https://blog.csdn.net/weixin_36892106/article/details/80109499>
 
 ## LESS
 
@@ -158,15 +146,17 @@ Preferences → Key Bindings – User
 
 
 
+
+
 ## 快捷键
 
 #### [选择类]
 | 按 Press         | 功能 Function                                                |
 | ---------------- | ------------------------------------------------------------ |
-| Ctrl+D           | 选中	光标所占的文本，继续操作则会选中下一个相同的文本     |
-| Alt+F3           | 选择	所有相同的词                                         |
-| Ctrl+L           | 选中	整行，继续操作则继续选择下一行，效果和 Shift+↓ 效果一样 |
-| Ctrl+Shift+L     | 先选中多行，再按下快捷键，会在每行行尾插入光标，即可同时编辑这些行 |
+| **Ctrl+D**       | 选中	光标所占的文本，继续操作则会选中下一个相同的文本     |
+| **Alt+F3**       | 选择	所有相同的词                                         |
+| **Ctrl+L**       | 选中	整行，继续操作则继续选择下一行，效果和 Shift+↓ 效果一样 |
+| **Ctrl+Shift+L** | 先选中多行，再按下快捷键，会在每行行尾插入光标，即可同时编辑这些行 |
 | Ctrl+Shift+M     | 选择括号内的内容（继续选择父括号）举个栗子    快速选中删除函数中的代码，重写函数体代码或重写括号内里的内容 |
 | Ctrl+M           | 光标	移动至括号内结束或开始的位置                         |
 | Ctrl+Enter       | 在下一行插入新行举个栗子即使光标不在行尾，也能快速向下插入一行 |
@@ -193,12 +183,12 @@ Preferences → Key Bindings – User
 
 | 按 Press               | 功能 Function  	|
 | ---------------------- | ----------------------------------- |
-| Ctrl+J 			| 	合并选中的多行代码为一行 |
-| Ctrl+Shift+D 		| 	复制光标所在整行，插入到下一行 |
+| **Ctrl+J** | 	合并选中的多行代码为一行 |
+| **Ctrl+Shift+D** | 	复制光标所在整行，插入到下一行 |
 | Tab 				| 	向右缩进 |
 | Shift+Tab 		| 	向左缩进 |
-| Ctrl+K+K 			| 	从光标处开始删除代码至行尾 |
-| Ctrl+Shift+K 		| 	删除整行 |
+| **Ctrl+K+K** | 	从光标处开始删除代码至行尾 |
+| **Ctrl+Shift+K** | 	删除整行 |
 | Ctrl+X    		| 	删除当前行 |
 | Ctrl+/ 			| 	注释单行 |
 | Ctrl+Alt+/    	| 	块注释，并Focus到首行，写注释说明用的 |
@@ -225,9 +215,12 @@ Preferences → Key Bindings – User
 | ------------ | -------------- |
 | Ctrl+F       | 搜索查找关键字 |
 | Ctrl+shift+F | 在文件夹内查找 |
-| Ctrl+P 	|	打开搜索框举个栗子 1、输入当前项目中的文件名，快速搜索文件，2、输入@和关键字，查找文件中函数名，3、输入和数字，跳转到文件中该行代码，4、输入#和关键字，查找变量名 |
-| Ctrl+G 		 |	跳转到某个行数 |
-| Ctrl+R 		 |	查找文件中的函数名 |
+| **Ctrl+P** |	快速搜索文件 |
+| -- |	@ 符号跳转：查找文件中函数名 |
+| -- |	#关键字跳转：查找变量名 |
+| -- |	：行号跳转：跳转到第N行 |
+| **Ctrl+G** |	跳转到某个行数 |
+| **Ctrl+R** |	查找文件中的函数名 |
 | Ctrl+     	 |	查找文件中的变量名、属性名等 |
 | Ctrl+Shift+P 	 |	打开命令面板 |
 | Esc 			 |	退出光标多行选择，退出搜索框，命令框等 |
@@ -238,7 +231,7 @@ Preferences → Key Bindings – User
 
 | 按 Press      | 功能 Function                            |
 | ------------- | ---------------------------------------- |
-| Ctrl+W        | 关闭当前打开文件                         |
+| **Ctrl+W**    | 关闭当前打开文件                         |
 | Ctrl+Shift+W  | 关闭所有打开文件                         |
 | Ctrl+Shift+V  | 粘贴并格式化                             |
 | Ctrl+Tab      | 按文件浏览过的顺序，切换当前窗口的标签页 |
@@ -253,11 +246,36 @@ Preferences → Key Bindings – User
 | Alt+Shift+9   | 垂直分屏-3屏                             |
 | Ctrl+K+B      | 开启/关闭侧边栏                          |
 | alt+-         | 上一个编辑处                             |
-| Alt+数字      | 切换打开第N个文件                        |
+| **Alt+数字**  | 切换打开第N个文件                        |
 | alt+shift+-   | 下一个编辑处                             |
 | Ctrl+N        | 新建窗口                                 |
 | F11           | 全屏模式                                 |
 | Shift+F11     | 免打扰模式                               |
+
+
+
+
+
+## 链接（Links）
+
+- 官方文档：<http://www.sublimetext.com/docs/3/>
+- 官方论坛：<http://www.sublimetext.com/forum/>
+- Stack Overflow 的 Sublime Text 频道：
+  - http://stackoverflow.com/questions/tagged/sublimetext
+  - http://stackoverflow.com/questions/tagged/sublimetext2
+  - http://stackoverflow.com/questions/tagged/sublimetext3
+- 非官方文档：http://sublime-text-unofficial-documentation.readthedocs.org/  甚至比官方文档还要全面！
+- Package Control：https://packagecontrol.io/  大量的 Sublime Text 插件和主题。
+
+
+
+#### 同类网址：
+
+http://zh.lucida.me/blog/sublime-text-complete-guide/
+
+https://www.jianshu.com/p/d1b9a64e2e37
+
+https://juejin.im/post/584f53228d6d8100545abc55
 
 
 
