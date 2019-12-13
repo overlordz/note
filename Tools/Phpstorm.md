@@ -7,6 +7,8 @@
 1. 安装插件 `Material Theme UI  ` ，安装后重起软件
 2. `Tools -> Material Theme ` 中选择喜欢的样式就可以了
 
+
+
 ## 快捷键【window环境】
 
 ![1554111041](../assets/tools/20190401175506.jpg) 
@@ -178,7 +180,7 @@ php artisan ide-helper:generate
 - Laravel Plugin
 - Laravel Snippets
 
-### 命令提示
+## 命令提示
 
 `settings>Tools>Command Line Tool Support` 
 
@@ -244,11 +246,17 @@ composer.json 配置文件管理，需要安装插件
 
 ![image-20180617171432968](../assets/tools/image-20180617171432968.png)
 
+
+
 ## 其他设置
+
+
 
 ### 取消格式化代码时 自动换行
 
 ![image-20180624194143371](../assets/tools/image-20180624194143371.png)
+
+
 
 ### 快速加符号
 
@@ -256,16 +264,32 @@ composer.json 配置文件管理，需要安装插件
 
 ![image-20180707154600462](../assets/tools/image-20180707154600462.png)
 
+
+
 ### 解决NPM变慢的问题
 
 生成 `node_modules` 目录后，加载特别慢并会卡死，解决方法如下：
 
 ![image-20180708020938479](../assets/tools/image-20180708020938479.png)
 
+
+
 ### 自动换行
 
 ```
 Preferences | Editor | General | Use soft wraps in editor
+```
+
+
+
+### Less
+
+```
+// 全局安装
+npm install -g less
+
+// 开启监听
+settings > Tools > File Watchers > less
 ```
 
 

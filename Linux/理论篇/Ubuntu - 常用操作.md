@@ -1,4 +1,4 @@
-#### 时区更改
+## 时区更改
 
 ##### 查看当前时间
 
@@ -31,9 +31,8 @@ root@ubuntu:/# cp /usr/share/zoneinfo/Asia/Shanghai  /etc/localtime
 
 
 
----
+## 创建用户（root）
 
-#### 创建用户（root）
 > sudo adduser userName
 
 #### 添加管理员权限
@@ -52,3 +51,13 @@ koala   ALL=(ALL:ALL) ALL（新增）
 切换root：
 # sudo su （输入管理员密码）
 ```
+
+
+
+## PHP扩展快速安装
+
+> apt install php版本号-扩展包名
+
+例如：安装zip扩展
+
+$ sudo apt-get install php7.1-zip
