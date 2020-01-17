@@ -124,9 +124,32 @@ $ vagrant up
 
 
 
+## 问题解决
+
+
+> Vagrant package 打包 Homestead box 出现 “ default: VM not created. Moving on... ”
+
+这是因为底层的虚拟机的名称跟vagrant的名称不一致，
+
+```
+$vboxmanage list vms
+"ubuntu-xenial-16.04-cloudimg" {02ab228e-7803-43cf-958b-2ab6bc8f69f5}
+$vagrant package --base ubuntu-xenial-16.04-cloudimg --output ./Ubuntu.box
+```
+
+或直接打开 VirtualBox 查看虚拟机的名称，然后直接导出来
+
+```
+$ vagrant package --base homestead-7 --output homestead.box
+```
+
+
+
+
 
 
 本文内容由以下文章进行二次修改整理：[点击查看](https://blog.csdn.net/yjk13703623757/article/details/70040797)
 
-查看Vagrantfile配置详解，[点击跳转](<https://blog.csdn.net/yjk13703623757/article/details/70768981>)
+查看Vagrantfile配置详解，[点击查看](<https://blog.csdn.net/yjk13703623757/article/details/70768981>)
 
+vboxmanage详解：[点击查看](https://segmentfault.com/a/1190000006729204)
