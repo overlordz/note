@@ -111,3 +111,7 @@ shell中可能经常能看到：>/dev/null  2>&1
 这种“后台”进程在shell一直打开的情况下是没有问题的，如果我们关了shell窗口甚至退出ssh登录或vnc登录，那么进程自动就结束了。所以如果想退出窗口乃至退出登录仍然保持程序运行，再加上nohup，
 
 形如：nohup command 1>output 2>&1 &
+
+分享链接：
+
+> https://blog.csdn.net/ithomer/article/details/9288353
