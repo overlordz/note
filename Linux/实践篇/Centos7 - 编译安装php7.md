@@ -1,4 +1,4 @@
-# centos7编译安装php7.3.1
+# 编译安装php7.3.16
 
 > centos系统版本7.4.*，php版本7.3.1
 
@@ -15,15 +15,15 @@ yum -y install gcc libxml2 libxml2-devel openssl openssl-devel curl-devel libjpe
 
 ```
 # cd /home
-# wget http://cn2.php.net/distributions/php-7.3.1.tar.gz
+# wget http://cn2.php.net/distributions/php-7.3.16.tar.gz
 ```
 
 解压php安装包
 
 ```
-# tar -zxvf php-7.3.1.tar.gz
+# tar -zxvf php-7.3.16.tar.gz
 
-# cd php-7.3.1
+# cd php-7.3.16
 ```
 
 编译参数配置
@@ -118,8 +118,9 @@ configure: error:system libzip must be upgraded to version >= 0.11
 	# tar -zxvf libzip-1.2.0.tar.gz
 	# cd libzip-1.2.0/
 	# ./configure
+	# make && make install
 
-重新执行：./configure --prefix=...  就不会报错
+重新执行php：./configure --prefix=...  就不会报错
 ```
 
 2、 Nginx和php-fpm用Sock套接字连接时，Nginx错误日志报以下错误提示
@@ -165,4 +166,58 @@ configure: error:system libzip must be upgraded to version >= 0.11
 
 		重启生效
 		#reboot
+```
+
+
+
+3、centos7编译php7 configure: error: off_t undefined; check your library configuration
+
+```
+# 添加搜索路径到配置文件
+echo '/usr/local/lib64
+/usr/local/lib
+/usr/lib
+/usr/lib64'>>/etc/ld.so.conf
+# 更新配置
+ldconfig -v
+```
+
+
+
+4、报错configure: error: Please reinstall the libzip distributio 或  configure: error: system libzip must be upgraded to version >= 0.11
+
+```
+yum remove libzip -y
+
+wget https://nih.at/libzip/libzip-1.2.0.tar.gz
+tar -zxvf libzip-1.2.0.tar.gz
+cd libzip-1.2.0
+./configure
+ 
+make && make install
+
+# cmake 和 cmake3都要安装
+yum install -y cmake
+yum install -y cmake3
+
+wget https://libzip.org/download/libzip-1.5.0.tar.gz
+tar -zxvf libzip-1.5*
+cd libzip-1.5*
+mkdir build && cd build && cmake3 .. && make && make install
+```
+
+
+
+5、报错/usr/local/include/zip.h:59:21: fatal error: zipconf.h: No such file or directory
+
+```
+cp /usr/local/lib/libzip/include/zipconf.h /usr/local/include/zipconf.h
+```
+
+
+
+6、 报错/package/php-7.3.7/ext/zip/php_zip.c:3318:48: error: ‘LIBZIP_VERSION’ undeclared (first use in this function)
+
+```
+重新正确安装 libzip
 ```

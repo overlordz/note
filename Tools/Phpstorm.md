@@ -291,3 +291,13 @@ npm install -g less
 // 开启监听
 settings > Tools > File Watchers > less
 ```
+
+
+
+### 注释模板修改
+
+> Settings -> Editor -> File and Code Templates 
+
+
+
+![注释模版修改](../assets/tools/phpstorm-showdoc.png)
