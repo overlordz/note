@@ -17,6 +17,8 @@ Sublime Text具有漂亮的用户界面和强大的功能，并且是一个跨�
 3. 在面板中输入“install package”后回车
 4. 接着输入插件名称如：“emmet” 回车即可（观察状态栏进度，晃动的等号）
 
+
+
 ## 风格
 
 风格包网站:[ https://packagecontrol.io](https://packagecontrol.io/)
@@ -27,6 +29,13 @@ Sublime Text具有漂亮的用户界面和强大的功能，并且是一个跨�
 https://packagecontrol.io/packages/Theme%20-%20Spacegray
 ```
 
+安装主题
+
+1. Package Control: Install Package
+2. 找到`Theme - Spacegray` 并选择
+
+设置主题
+
 1. Preferences > color scheme >theme-spacegray
 2. Preferences-> setting 中设置以下
 
@@ -34,6 +43,8 @@ https://packagecontrol.io/packages/Theme%20-%20Spacegray
 "theme": "Spacegray.sublime-theme",
 "color_scheme": "Packages/Theme - Spacegray/base16-ocean.dark.tmTheme"
 ```
+
+
 
 ## 图标
 
@@ -146,8 +157,6 @@ Preferences → Key Bindings – User
 
 
 
-
-
 ## 快捷键
 
 #### [选择类]
@@ -254,6 +263,41 @@ Preferences → Key Bindings – User
 
 
 
+## 用户设置（首选项—>设置-用户）
+
+- 消除升级提示："update_check":false,
+- 设置默认编码为UTF-8："default_encoding": "UTF-8",
+- 设置字体:  "font_face": "Consolas",
+- 行号边栏和文字的间距:  "margin": 4,
+- 自动匹配引号，括号等:  "auto_match_enabled": true,
+- 突出显示当前光标所在的行:  "highlight_line": false,
+- 设置行距: "line_padding_top": 1,  "line_padding_bottom": 1,
+- 代码提示:  "auto_complete": true,
+- 保持退出前的状态:  "hot_exit": true,
+- 解决中文文件名显示问题："dpi_scale": 1.0,
+
+个人配置
+
+```
+{
+	"auto_match_enabled": true,
+	"color_scheme": "Packages/Theme - Spacegray/base16-ocean.dark.tmTheme",
+	"default_encoding": "UTF-8",
+	"font_size": 14,
+	"highlight_line": true,
+	"ignored_packages":
+	[
+		"Vintage"
+	],
+	"line_padding_bottom": 2,
+	"line_padding_top": 2,
+	"theme": "Spacegray.sublime-theme",
+	"update_check": false
+}
+```
+
+
+
 
 
 ## 链接（Links）
@@ -279,21 +323,29 @@ https://juejin.im/post/584f53228d6d8100545abc55
 
 
 
-**最新版激活码**
 
-```
------ BEGIN LICENSE -----
-ZYNGA INC.
-50 User License
-EA7E-811825
-927BA117 84C9300F 4A0CCBC4 34A56B44
-985E4562 59F2B63B CCCFF92F 0E646B83
-0FD6487D 1507AE29 9CC4F9F5 0A6F32E3
-0343D868 C18E2CD5 27641A71 25475648
-309705B3 E468DDC4 1B766A18 7952D28C
-E627DDBA 960A2153 69A2D98A C87C0607
-45DC6049 8C04EC29 D18DFA40 442C680B
-1342224D 44D90641 33A3B9F2 46AADB8F
------- END LICENSE ------
-```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# LNPA3GBC5BG028783
 
