@@ -1,6 +1,6 @@
-# 编译安装php7.3.16
+# 编译安装php7.3
 
-> centos系统版本7.4.*，php版本7.3.1
+> centos系统版本7.6.*，php版本7.3.16
 
 
 #### 第一：依赖安装
@@ -18,7 +18,7 @@ yum -y install gcc libxml2 libxml2-devel openssl openssl-devel curl-devel libjpe
 # wget http://cn2.php.net/distributions/php-7.3.16.tar.gz
 ```
 
-解压php安装包
+**解压php安装包**
 
 ```
 # tar -zxvf php-7.3.16.tar.gz
@@ -26,13 +26,21 @@ yum -y install gcc libxml2 libxml2-devel openssl openssl-devel curl-devel libjpe
 # cd php-7.3.16
 ```
 
-编译参数配置
+**编译参数配置**
 
 ```
-./configure --prefix=/usr/local/php --with-pdo-pgsql --with-zlib-dir --with-freetype-dir --enable-mbstring --with-libxml-dir=/usr --enable-soap --enable-calendar --with-curl --with-mcrypt --with-gd --with-pgsql --disable-rpath --enable-inline-optimization --with-bz2 --with-zlib --enable-sockets --enable-sysvsem --enable-sysvshm --enable-pcntl --enable-mbregex --enable-exif --enable-bcmath --with-mhash --enable-zip --with-pcre-regex --with-pdo-mysql --with-mysqli --with-jpeg-dir=/usr --with-png-dir=/usr --enable-gd-native-ttf --with-openssl --with-fpm-user=www --with-fpm-group=www --with-libdir=/lib/x86_64-linux-gnu/ --enable-ftp --with-gettext --with-xmlrpc --with-xsl --enable-opcache --enable-fpm --with-iconv --with-xpm-dir=/usr
+./configure --prefix=/usr/local/php --with-pdo-pgsql --with-zlib-dir --with-freetype-dir --enable-mbstring --with-libxml-dir=/usr --enable-soap --enable-calendar --with-curl --with-gd --with-pgsql --disable-rpath --enable-inline-optimization --with-bz2 --with-zlib --enable-sockets --enable-sysvsem --enable-sysvshm --enable-pcntl --enable-mbregex --enable-exif --enable-bcmath --with-mhash --enable-zip --with-pcre-regex --with-pdo-mysql --with-mysqli --with-jpeg-dir=/usr --with-png-dir=/usr --with-openssl --with-fpm-user=www --with-fpm-group=www --with-libdir=/lib/x86_64-linux-gnu/ --enable-ftp --with-gettext --with-xmlrpc --with-xsl --enable-opcache --enable-fpm --with-iconv --with-xpm-dir=/usr
 ```
 
-编译&安装
+注意事项：
+
+在phh7.1时，官方就开始建议用openssl_*系列函数代替Mcrypt_*系列的函数
+
+从php7.2开始不支持：unrecognized options: –with-mcrypt, –enable-gd-native-ttf
+
+
+
+**编译&安装**
 
 ```
 make && make install
@@ -42,7 +50,6 @@ make && make install
 
 ```
 # cp php.ini-production /usr/local/php/lib/php.ini
-
 ```
 
 另外还需要设置环境变量
@@ -56,7 +63,9 @@ export PATH
 
 然后执行 命令 `source /etc/profile`
 
-php -v 就可以看到PHP版本信息了。
+php -v 就可以看到PHP版本信息了
+
+
 
 
 #### 此时还需要配置PHP-fpm:
@@ -99,29 +108,45 @@ chkconfig php-fpm on
 
 
 
-#### 问题解答：
+## 安装过程问题解答：
 
 1、 在./configure这个一步的时候，可能会抛出以下错误：
 
-```
-configure: error: Please reinstall the libzip distributio
-或者
-configure: error:system libzip must be upgraded to version >= 0.11
+![](../../assets/Linux/practice/20200327134144.png)
 
+```
 其原因是：libzip版本过低
 解决办法：卸载现在的低版本，重新安装新的版本
 	
-	yum remove libzip libzip-devel
+# yum remove libzip libzip-devel
 
-然后：
-	# wget https://nih.at/libzip/libzip-1.2.0.tar.gz
-	# tar -zxvf libzip-1.2.0.tar.gz
-	# cd libzip-1.2.0/
-	# ./configure
-	# make && make install
+然后下载新版本：
 
-重新执行php：./configure --prefix=...  就不会报错
+//1.2.0版本
+# wget https://nih.at/libzip/libzip-1.2.0.tar.gz
+# tar -zxvf libzip-1.2.0.tar.gz
+# cd libzip-1.2.0
+# ./configure
+# make && make install
+
+// 1.5.0新版本
+
+如果直接 './configure' 安装,会弹出提示：-bash: ./configure: No such file or directory,我们可以通过查看软件目录下的readme和INSTALL文件，里面会告诉你怎么安装软件，例如本软件是通过cmake安装的。
+
+同时CentOS 7上官方的CMake版本是2.8.12，比较旧。许多新的C/C++项目要求的最低版本至少是3，需要升级旧版本或者直接安装新版。
+
+// cmake 和 cmake3都要安装
+# yum install -y cmake
+# yum install -y cmake3
+// 如果提示cmake3 没有找到，可以`yum install epel-release` 再install
+
+# wget https://libzip.org/download/libzip-1.5.0.tar.gz
+# tar -zxvf libzip-1.5.0.tar.gz
+# cd libzip-1.5.0/
+# mkdir build && cd build && cmake3 .. && make && make install
 ```
+
+
 
 2、 Nginx和php-fpm用Sock套接字连接时，Nginx错误日志报以下错误提示
 
@@ -129,43 +154,45 @@ configure: error:system libzip must be upgraded to version >= 0.11
 
 ```
 解决办法一：看看Nginx和php-fpm在同一个用户组，如果不是则设置统一
-	查看Nginx和php-fpm信息
-	# ps aux|grep nginx 
-	# ps aux|grep php
 
-	修改配置文件：
-	/etc/nginx/nginx.conf 中修改以下内容：
-		user nginx;
+查看Nginx和php-fpm信息
+# ps aux|grep nginx 
+# ps aux|grep php
 
-	/usr/local/php/etc/php-fpm.d/www.conf 中修改以下内容：
-		user = nginx
-		group = nginx
-		listen.owner = www
-		listen.group = www
-		listen.mode = 0666
-		修改linten:
-        ;listen = 127.0.0.1:9000
-        listen = /usr/local/php/var/run/php-fpm.sock
+修改配置文件：
+/etc/nginx/nginx.conf 中修改以下内容：
+user nginx;
+
+/usr/local/php/etc/php-fpm.d/www.conf 中修改以下内容：
+    user = nginx
+    group = nginx
+    listen.owner = www
+    listen.group = www
+	listen.mode = 0666
+修改linten:
+    ;listen = 127.0.0.1:9000
+    listen = /usr/local/php/var/run/php-fpm.sock
 
 解决办法二：解决办法一还没有解决，那么其原因有可能是“SELinux”设置为开启状态（enabled）的原因，将状态改为关闭
-	查看本机SELinux的开启状态
-		#cd /usr/sbin/
-		#sestatus -v
 
-	临时关闭（不用重启）
-		#setenforce 0
+查看本机SELinux的开启状态
+    # cd /usr/sbin/
+    # sestatus -v
 
-	永久关闭（需要重启）
-		修改配置文件 /etc/selinux/config,将SELINUX=enforcing 改为 SELINUX=disabled
+临时关闭（不用重启）
+	# setenforce 0
 
-		#vi /etc/selinux/config
- 
-		修改
-   		#SELINUX=enforcing
-		SELINUX=disabled
+永久关闭（需要重启）
+修改配置文件 /etc/selinux/config,将SELINUX=enforcing 改为 SELINUX=disabled
 
-		重启生效
-		#reboot
+	# vi /etc/selinux/config
+
+修改
+    #SELINUX=enforcing
+    SELINUX=disabled
+
+重启生效
+	# reboot
 ```
 
 
@@ -184,31 +211,7 @@ ldconfig -v
 
 
 
-4、报错configure: error: Please reinstall the libzip distributio 或  configure: error: system libzip must be upgraded to version >= 0.11
-
-```
-yum remove libzip -y
-
-wget https://nih.at/libzip/libzip-1.2.0.tar.gz
-tar -zxvf libzip-1.2.0.tar.gz
-cd libzip-1.2.0
-./configure
- 
-make && make install
-
-# cmake 和 cmake3都要安装
-yum install -y cmake
-yum install -y cmake3
-
-wget https://libzip.org/download/libzip-1.5.0.tar.gz
-tar -zxvf libzip-1.5*
-cd libzip-1.5*
-mkdir build && cd build && cmake3 .. && make && make install
-```
-
-
-
-5、报错/usr/local/include/zip.h:59:21: fatal error: zipconf.h: No such file or directory
+4、报错/usr/local/include/zip.h:59:21: fatal error: zipconf.h: No such file or directory
 
 ```
 cp /usr/local/lib/libzip/include/zipconf.h /usr/local/include/zipconf.h
@@ -216,8 +219,16 @@ cp /usr/local/lib/libzip/include/zipconf.h /usr/local/include/zipconf.h
 
 
 
-6、 报错/package/php-7.3.7/ext/zip/php_zip.c:3318:48: error: ‘LIBZIP_VERSION’ undeclared (first use in this function)
+5、 报错/package/php-7.3.16/ext/zip/php_zip.c:3318:48: error: ‘LIBZIP_VERSION’ undeclared (first use in this function)
 
 ```
 重新正确安装 libzip
 ```
+
+
+
+参考链接：
+
+https://cloud.tencent.com/document/product/213/38056
+
+https://blog.csdn.net/ijijni/article/details/89913738
