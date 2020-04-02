@@ -3,13 +3,15 @@
 > centos系统版本7.6.*，php版本7.3.16
 
 
-#### 第一：依赖安装
+### 第一：依赖安装
 
 ```
 yum -y install gcc libxml2 libxml2-devel openssl openssl-devel curl-devel libjpeg-devel bzip2-devel.x86_64 libXpm-devel gmp-devel icu libicu libicu-devel php-mcrypt libmcrypt libmcrypt-devel postgresql-devel libxslt-devel libpng libpng-devel freetype-devel php-devel
 ```
 
-#### 第二：编译安装
+
+
+### 第二：编译安装
 
 > 下载php安装包到home
 
@@ -18,29 +20,43 @@ yum -y install gcc libxml2 libxml2-devel openssl openssl-devel curl-devel libjpe
 # wget http://cn2.php.net/distributions/php-7.3.16.tar.gz
 ```
 
-**解压php安装包**
+#### **解压php安装包**
 
 ```
 # tar -zxvf php-7.3.16.tar.gz
-
 # cd php-7.3.16
 ```
 
-**编译参数配置**
+#### 编译参数配置
 
 ```
-./configure --prefix=/usr/local/php --with-pdo-pgsql --with-zlib-dir --with-freetype-dir --enable-mbstring --with-libxml-dir=/usr --enable-soap --enable-calendar --with-curl --with-gd --with-pgsql --disable-rpath --enable-inline-optimization --with-bz2 --with-zlib --enable-sockets --enable-sysvsem --enable-sysvshm --enable-pcntl --enable-mbregex --enable-exif --enable-bcmath --with-mhash --enable-zip --with-pcre-regex --with-pdo-mysql --with-mysqli --with-jpeg-dir=/usr --with-png-dir=/usr --with-openssl --with-fpm-user=www --with-fpm-group=www --with-libdir=/lib/x86_64-linux-gnu/ --enable-ftp --with-gettext --with-xmlrpc --with-xsl --enable-opcache --enable-fpm --with-iconv --with-xpm-dir=/usr
+./configure --prefix=/usr/local/php --with-pdo-pgsql --with-zlib-dir --with-freetype-dir --enable-mbstring --with-libxml-dir=/usr --enable-soap --enable-calendar --with-curl --with-gd --with-pgsql --disable-rpath --enable-inline-optimization --with-bz2 --with-zlib --enable-sockets --enable-sysvsem --enable-sysvshm --enable-pcntl --enable-mbregex --enable-exif --enable-bcmath --with-mhash --enable-zip --with-pcre-regex --with-pdo-mysql --with-mysqli --with-jpeg-dir=/usr --with-png-dir=/usr --with-openssl --with-fpm-user=nginx --with-fpm-group=nginx --with-libdir=/lib/x86_64-linux-gnu/ --enable-ftp --with-gettext --with-xmlrpc --with-xsl --enable-opcache --enable-fpm --with-iconv --with-xpm-dir=/usr
 ```
 
-注意事项：
+**注意事项**：
 
-在phh7.1时，官方就开始建议用openssl_*系列函数代替Mcrypt_*系列的函数
+1、在php7.1时，官方就开始建议用openssl_*系列函数代替Mcrypt_*系列的函数；从php7.2开始不支持：unrecognized options: –with-mcrypt, –enable-gd-native-ttf
 
-从php7.2开始不支持：unrecognized options: –with-mcrypt, –enable-gd-native-ttf
+2、一些文章这里的参数写这个`--with-fpm-user=www --with-fpm-group=www` , 
+
+会出现错误：`ERROR: [pool www] cannot get uid for user 'www'`
+解决办法是：新建www 用户组：
+
+```
+# groupadd www
+# useradd -g www www
+```
+
+3、Nginx报403 forbidden错误 (13: Permission denied)的解决办法
+
+```
+1、检查目录权限问题
+2、nginx和php 用户组不一样的问题，可以跟我一样把php用户组设为nginx
+```
 
 
 
-**编译&安装**
+#### **编译&安装**
 
 ```
 make && make install
@@ -54,7 +70,7 @@ make && make install
 
 另外还需要设置环境变量
 
-修改/etc/profile文件使其永久性生效，并对所有系统用户生效，在文件末尾加上如下两行代码
+修改`/etc/profile`文件使其永久性生效，并对所有系统用户生效，在文件末尾加上如下两行代码
 
 ```
 PATH=$PATH:/usr/local/php/bin
@@ -71,39 +87,18 @@ php -v 就可以看到PHP版本信息了
 #### 此时还需要配置PHP-fpm:
 
 ```
-将php-fpm控制脚本加入到/etc/init.d/下，并给予可执行权限：
-# cp /home/php-7.3.1/sapi/fpm/init.d.php-fpm /etc/init.d/php-fpm
-# chmod +x /etc/init.d/php-fpm
-
 修改配置文件：
+# cp php.ini-production /usr/local/php/conf/php.ini
 # cp /usr/local/php/etc/php-fpm.conf.default /usr/local/php/etc/php-fpm.conf
 # cp /usr/local/php/etc/php-fpm.d/www.conf.default /usr/local/php/etc/php-fpm.d/www.conf
 ```
 
-启动php-fpm:
+systemctl文件加入开机启动文件
 
 ```
-/etc/init.d/php-fpm start
-```
-
-如果出现错误：`ERROR: [pool www] cannot get uid for user 'www'`
-则新建www 用户组：
-
-```
-# groupadd www
-# useradd -g www www
-```
-
-然后再启动php-fpm
-
-#### 自启动配置
-
-```
-systemctl enable php-fpm.service
-
-或
-
-chkconfig php-fpm on
+# cp sapi/fpm/php-fpm.service /usr/lib/systemd/system/php-fpm.service
+# systemctl start php-fpm.service
+# systemctl enable php-fpm.service
 ```
 
 
@@ -148,7 +143,21 @@ chkconfig php-fpm on
 
 
 
-2、 Nginx和php-fpm用Sock套接字连接时，Nginx错误日志报以下错误提示
+2、centos7编译php7 configure: error: off_t undefined; check your library configuration
+
+```
+# 添加搜索路径到配置文件
+echo '/usr/local/lib64
+/usr/local/lib
+/usr/lib
+/usr/lib64'>>/etc/ld.so.conf
+# 更新配置
+ldconfig -v
+```
+
+
+
+3、 Nginx和php-fpm用Sock套接字连接时，Nginx错误日志报以下错误提示
 
 > [crit] 1654#0: *1 connect() to unix:/usr/local/php/var/run/php-fpm.sock failed (13: Permission denied) while connecting to upstream, client: 192.168.1.204, server: laravel.test, request: "GET /favicon.ico HTTP/1.1", upstream: "fastcgi://unix:/usr/local/php/var/run/php-fpm.sock:", 
 
@@ -166,8 +175,8 @@ user nginx;
 /usr/local/php/etc/php-fpm.d/www.conf 中修改以下内容：
     user = nginx
     group = nginx
-    listen.owner = www
-    listen.group = www
+    listen.owner = nginx
+    listen.group = nginx
 	listen.mode = 0666
 修改linten:
     ;listen = 127.0.0.1:9000
@@ -197,20 +206,6 @@ user nginx;
 
 
 
-3、centos7编译php7 configure: error: off_t undefined; check your library configuration
-
-```
-# 添加搜索路径到配置文件
-echo '/usr/local/lib64
-/usr/local/lib
-/usr/lib
-/usr/lib64'>>/etc/ld.so.conf
-# 更新配置
-ldconfig -v
-```
-
-
-
 4、报错/usr/local/include/zip.h:59:21: fatal error: zipconf.h: No such file or directory
 
 ```
@@ -232,3 +227,4 @@ cp /usr/local/lib/libzip/include/zipconf.h /usr/local/include/zipconf.h
 https://cloud.tencent.com/document/product/213/38056
 
 https://blog.csdn.net/ijijni/article/details/89913738
+

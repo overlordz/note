@@ -14,7 +14,7 @@ http://nodejs.org/dist/
 
 或者wget下载:
 
-> https://nodejs.org/dist/v12.16.1/node-v12.16.1-linux-x64.tar.xz
+> wget https://nodejs.org/dist/v12.16.1/node-v12.16.1-linux-x64.tar.xz
 
 2、解压安装包
 
