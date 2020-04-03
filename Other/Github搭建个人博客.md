@@ -126,5 +126,22 @@ www： 解析后的域名为www.baidu.com
 
 
 
+## 安装过程遇到问题
+
+1、`npm install` 过程弹出 Error: ENOTSUP: operation not supported on socket, symlink '../../_abbrev@1.1.1@abbrev' -> '/data/web/code/hexo-blog/node_modules/_hexo@4.2.0@hexo/node_modules/abbrev'
+
+解决办法
+
+```
+// 原因是创建不能创建链接
+# npm install -no-bin-links
+```
+
+
+
+
+
+
+
 > PS:发现一个写Hexo文章比较全的，想看更具体的请点击[直接跳转](<https://www.simon96.online/2018/10/12/hexo-tutorial/>)！
 

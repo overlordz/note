@@ -37,3 +37,16 @@ ln -s /usr/local/nodejs/bin/npm /usr/local/bin
 node -v
 ```
 
+5、如果安装其他插件如`cnpm`和`hexo`，直接输出cnpm[hexo] -v  是不识别的，可以通过以下操作
+
+```
+方式一： 
+# /usr/local/nodejs/bin/cnpm -v
+
+方式二：
+// 添加软连
+# ln -s /usr/local/nodejs/bin/cnpm /usr/local/bin
+# ln -s /usr/local/nodejs/bin/hexo /usr/local/bin
+# cnpm -v
+```
+
