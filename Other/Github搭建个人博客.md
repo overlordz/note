@@ -1,21 +1,22 @@
 # Github+Hexo搭建个人博客
 
-##### # 前言
+#### # 前言
 
 查看一些技术博客时发现他们的域名都是 ***.github.io **，就怀着好奇的心思百度了解一下，原来github可以创建免费的博客网站，然后只要再利用Hexo那就可以搭建好看的博客了。
 
 
 
-##### # 准备工作
-
-```javascript
-1. 有一个github账号；
-2. 安装了nodejs、npm；
-```
+#### # 准备工作
 
 
+1. 有一个github账号
 
-##### # 搭建GitHub博客
+2. 安装了nodejs、npm
+
+   
+
+
+#### # 搭建GitHub博客
 
 1. 创建仓库
 建一个名为 你的用户名.github.io 的仓库，比如说，如果你的github用户名是yourname，那么你就新建yourname.github.io的仓库（必须是你的用户名，其它名称无效），之后你的网站访问地址就是 https://yourname.github.io 。
@@ -30,8 +31,13 @@
 
 
 
+#### # 安装Hexo
 
-##### # Hexo主题更换
+> npm install -g hexo-cli
+
+
+
+#### # Hexo主题更换
 
 1. 选择Next主题，[点击跳转](http://theme-next.iissnan.com/getting-started.html)
 
@@ -82,7 +88,24 @@ hexo new page "页面名" #新建页面
 hexo s 或 hexo server
 
 
-##### # 绑定阿里云域名（其他原理相同）
+
+#### # 博客优化
+
+1、调整hexo页面宽度
+
+> 编辑 /themes/next/source/css\_variables/custom.styl 添加两行代码
+
+```
+$main-desktop = 1200px 
+$content-desktop = 900px
+```
+
+
+
+
+
+
+#### # 绑定阿里云域名（其他原理相同）
 
 1. 在github项目根目录**创建CNAME文件** （注意没有后缀，且文件名是大写），然后在该文件增加**你的域名**，告诉Github Pages服务器你想指定的域名。该域名不能包含前缀信息，即不能添加http://前缀。 
 
@@ -121,8 +144,6 @@ www： 解析后的域名为www.baidu.com
 *： 泛解析，匹配其他所有域名 *.baidu.com
 二级域名： 如：abc.qcloud.com，填写abc
 ```
-
-
 
 
 
