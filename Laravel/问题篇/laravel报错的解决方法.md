@@ -10,3 +10,8 @@ Route::get('/users','UserController@index')->name('users.index');
 Route::get('/users/{user}','UserController@show')->name('users.show');
 ```
 
+
+
+**Laravel 访问报错 500，但是不显示错误信息** 
+
+查看项目中是否存在 `.env` 文件，添加文件后执行：`php artisan key:generate`

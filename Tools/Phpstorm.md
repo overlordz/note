@@ -301,3 +301,9 @@ settings > Tools > File Watchers > less
 
 
 ![注释模版修改](../assets/tools/phpstorm-showdoc.png)
+
+
+
+### Terminal 字体设置
+
+> 设置 -> Editor -> Color Scheme -> Console Font
