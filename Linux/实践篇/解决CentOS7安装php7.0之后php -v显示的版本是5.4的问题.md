@@ -1,6 +1,6 @@
 #### 查看列出的php的版本信息
 
-> **/usr/local/bin/php -v**
+> **/usr/local/php/bin/php -v**
 
 显示的是php5.4
 

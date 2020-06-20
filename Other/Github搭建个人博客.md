@@ -13,6 +13,8 @@
 
 2. 安装了nodejs、npm
 
+3. npm install -g hexo-cli
+
    
 
 
