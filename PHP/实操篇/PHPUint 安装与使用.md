@@ -11,13 +11,13 @@
 
 
 
-composer安装
+#### composer安装
 
 > composer require --dev phpunit/phpunit ^6
 
 
 
-在项目根目录查看是否安装成功
+#### 在项目根目录查看是否安装成功
 
 > ./vendor/bin/phpunit
 
@@ -52,8 +52,46 @@ class FirstTest extends TestCase
 
 
 
-**命令行执行:**
+#### **命令行执行:**
+
 phpunit 命令 测试文件命名
 
 > \#  ./vendor/bin/phpunit ./tests/Unit/FirstTest.php 
 
+
+
+## PHPStorm 配置使用PHPunit
+
+##### 1、配置phpstorm的php版本以及PHP解析器
+
+![20200928114613.png](../../assets/php/PHPunit/20200928114613.png)
+
+
+
+##### 2、配置phpunit
+
+![20200928114913.png](../../assets/php/PHPunit/20200928114913.png)
+
+##### 如果出现 标记5  的内容证明配置成功
+
+
+
+##### 3、配置测试文件
+
+![20200928115606.png](../../assets/php/PHPunit/20200928115606.png)
+
+我需要测试的是tests目录下所有的测试脚本，所以就选择Directory，然后目录就是指向我创建的tests目录
+
+
+
+然后点击右边的小箭头，就会自动运行 上面我配置的tests目录下面所有的测试脚本
+
+![20200928115738.png](../../assets/php/PHPunit/20200928115738.png)
+
+
+
+
+
+参考链接：
+
+1. http://www.php20.cn/article/181
