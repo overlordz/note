@@ -130,13 +130,11 @@
         * [动态规划.md](https://github.com/overlordz/note/blob/master/PHP/算法/动态规划.md)
         * [排序算法.md](https://github.com/overlordz/note/blob/master/PHP/算法/排序算法.md)
         * [算法实现.md](https://github.com/overlordz/note/blob/master/PHP/算法/算法实现.md)
-    * [解决手机端和 PC 端跳转不同页面.md](https://github.com/overlordz/note/blob/master/PHP/解决手机端和 PC 端跳转不同页面.md)
 * Queue
     * [ActiveMQ+Stomp+PHP实现消息队列.md](https://github.com/overlordz/note/blob/master/Queue/ActiveMQ+Stomp+PHP实现消息队列.md)
 * [readme.md](https://github.com/overlordz/note/blob/master/readme.md)
 * Redis
     * [[Redis]常用问题.md](https://github.com/overlordz/note/blob/master/Redis/[Redis]常用问题.md)
-* [scandDir.php](https://github.com/overlordz/note/blob/master/scandDir.php)
 * Tools
     * [Composer.md](https://github.com/overlordz/note/blob/master/Tools/Composer.md)
     * [Git-常用命令速查.md](https://github.com/overlordz/note/blob/master/Tools/Git-常用命令速查.md)
@@ -151,7 +149,7 @@
     * [国内访问github慢的处理.md](https://github.com/overlordz/note/blob/master/Tools/国内访问github慢的处理.md)
 * 前端
     * [40个CSS布局技巧.md](https://github.com/overlordz/note/blob/master/前端/40个CSS布局技巧.md)
-    * [48张小图带你领略 flex 布局之美.md](https://github.com/overlordz/note/blob/master/前端/48张小图带你领略 flex 布局之美.md)
+    * [48张小图带你领略Flex布局之美.md](https://github.com/overlordz/note/blob/master/前端/48张小图带你领略Flex布局之美.md)
     * [Jsonp跨域原理解析.md](https://github.com/overlordz/note/blob/master/前端/Jsonp跨域原理解析.md)
     * [npm.md](https://github.com/overlordz/note/blob/master/前端/npm.md)
     * Tools
