@@ -1,3 +1,5 @@
+### 解决CentOS7安装php7.0之后php-v显示的版本是5.4的问题
+
 #### 查看列出的php的版本信息
 
 > **/usr/local/php/bin/php -v**
