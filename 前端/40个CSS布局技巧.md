@@ -1,4 +1,4 @@
->  原文地址 \[mp.weixin.qq.com\](https://mp.weixin.qq.com/s/9f4UaZWzYSJB\_ZdwhS3A3A)
+>  原文地址 \[mp.weixin.qq.com\](https://mp.weixin.qq.com/s/9f4UaZWzYSJB_ZdwhS3A3A)
 
 <img src="https://mmbiz.qpic.cn/mmbiz_jpg/Z6bicxIx5naLictAkPmGBSLHsmdGrWj1stFgB0YcIJ5iahSJHfDYkdJ9riaxFv2K4ShCIyQEPc7vyweKiaSGCftoPZA/640?wx_fmt=jpeg" style="zoom: 80%;" />
 
@@ -25,8 +25,8 @@ Flexbox 中实现水平垂直居中
 <div>
     <div></div>
 </div>
-/\* CSS \*/
-.flex\_\_container {
+/* CSS */
+.flex__container {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -44,8 +44,8 @@ Flexbox 中实现水平垂直居中
 <div>
     <svg> </svg>
 </div>
-/\* CSS \*/
-.flex\_\_container {
+/* CSS */
+.flex__container {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -66,8 +66,8 @@ Flexbox 中实现水平垂直居中
     <div></div>
     <div></div>
 </div>
-/\* CSS \*/
-.flex\_\_container  {
+/* CSS */
+.flex__container  {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -86,12 +86,12 @@ Flexbox 中实现水平垂直居中
 <div>
     <div></div>
 </div>
-/\* CSS \*/
-.flex\_\_container {
+/* CSS */
+.flex__container {
     display: flex; // 或inline-flex
     justify-content: center;
 }
-.flex\_\_item {
+.flex__item {
     align-self: center;
 }
 ```
@@ -103,11 +103,11 @@ Flexbox 中实现水平垂直居中
 如果在 Flex 容器中有多个 Flex 项目时，该方法同样有效：
 
 ```
-.flex\_\_container {
+.flex__container {
     display: flex; // 或inline-flex
     justify-content: center;
 }
-.flex\_\_container > \* {
+.flex__container > * {
     align-self: center;
 }
 ```
@@ -119,11 +119,11 @@ Flexbox 中实现水平垂直居中
 除此之外，还可以使用 place-content: center 让 Flex 项目实现水平垂直居中：
 
 ```
-.flex\_\_container {
+.flex__container {
     display: flex;
     place-content: center;
 }
-.flex\_\_item {
+.flex__item {
     align-self: center;
 }
 ```
@@ -135,7 +135,7 @@ Flexbox 中实现水平垂直居中
 或者换：
 
 ```
-.flex\_\_container {
+.flex__container {
     display: flex;
     place-content: center;
     place-items: center;
@@ -149,16 +149,16 @@ Flexbox 中实现水平垂直居中
 这两种方式同样适用于 Flex 容器中有多个 Flex 项目的情景：
 
 ```
-.flex\_\_container {
+.flex__container {
     display: flex;
     flex-direction: column;
     place-content: center;
 }
-.flex\_\_container > \* {
+.flex__container > * {
     align-self: center;
 }
 // 或
-.flex\_\_container {
+.flex__container {
     display: flex;
     flex-direction: column;
     place-content: center;
@@ -173,7 +173,7 @@ Flexbox 中实现水平垂直居中
 可能很多同学对于 place-content 和 place-items 会感到陌生。其实 place-content 是 align-content 和 justify-content 的简写属性；而 place-items 是 align-items 和 justify-items 的简写属性。即：
 
 ```
-.flex\_\_container {
+.flex__container {
     place-content: center;
     place-items: center;
 }
@@ -182,7 +182,7 @@ Flexbox 中实现水平垂直居中
 等效于：
 
 ```
-.flex\_\_container {
+.flex__container {
     align-content: center;
     justify-content: center;
     align-items: center;
@@ -193,13 +193,13 @@ Flexbox 中实现水平垂直居中
 虽然扩展出来有四个属性，但最终等效于：
 
 ```
-.flex\_\_container {
+.flex__container {
     display: flex;
     align-items: center;
     justify-content: center;
 }
 // 多行
-.flex\_\_container {
+.flex__container {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -212,10 +212,10 @@ Flexbox 中实现水平垂直居中
 如果在 Flex 容器中只有一个 Flex 项目，还可以显式在 Flex 项目中显式设置 margin 的值为 auto，这样也可以让 Flex 项目在 Flex 容器中水平垂直居中。例如：
 
 ```
-.flex\_\_container {
+.flex__container {
     display: flex; // 或 inline-flex
 }
-.flex\_\_item {
+.flex__item {
     margin: auto;
 }
 ```
@@ -239,7 +239,7 @@ CSS Grid 布局可以说是现代 Web 布局中的银弹。它也是到目前为
 <div>
     <div></div>
 </div>
-/\* CSS \*/
+/* CSS */
 .grid {
     display: grid; // 或 inline-grid
     place-items: center
@@ -285,14 +285,14 @@ CSS Grid 布局可以说是现代 Web 布局中的银弹。它也是到目前为
         <div>Go somewhere</div>
     </div>
 </div>
-/\* CSS \*/
-.grid\_\_container {
+/* CSS */
+.grid__container {
     display: grid;
     place-items: center;
     grid-template-columns: repeat(2, 1fr);
     gap: 2vh;
 }
-.grid\_\_item {
+.grid__item {
     display: grid;
     place-items: center;
 }
@@ -310,13 +310,13 @@ CSS Grid 布局可以说是现代 Web 布局中的银弹。它也是到目前为
 
 ```
 <!-- Flexbox -->
-<flex\_\_container>
-    <flex\_\_item></flex\_\_item>
-    <flex\_\_item></flex\_\_item>
-    <flex\_\_item></flex\_\_item>
-</flex\_\_container>
-/\* CSS \*/
-.flex\_\_container {
+<flex__container>
+    <flex__item></flex__item>
+    <flex__item></flex__item>
+    <flex__item></flex__item>
+</flex__container>
+/* CSS */
+.flex__container {
     display: flex; // 或 inline-flex
 }
 ```
@@ -335,15 +335,15 @@ CSS Grid 布局可以说是现代 Web 布局中的银弹。它也是到目前为
 
 ```
 <!-- HTML -->
-<grid\_\_container>
-    <grid\_\_item></grid\_\_item>
-    <grid\_\_item></grid\_\_item>
-    <grid\_\_item></grid\_\_item>
-</grid\_\_container>
-/\* CSS \*/
-.grid\_\_container {
+<grid__container>
+    <grid__item></grid__item>
+    <grid__item></grid__item>
+    <grid__item></grid__item>
+</grid__container>
+/* CSS */
+.grid__container {
     display: grid;
-    grid-template-columns: 20vw 1fr 20vw; /\* 根据需求调整值\*/
+    grid-template-columns: 20vw 1fr 20vw; /* 根据需求调整值*/
 }
 ```
 
@@ -359,20 +359,20 @@ CSS Grid 布局可以说是现代 Web 布局中的银弹。它也是到目前为
 
 ```
 <!-- HTML -->
-<flex\_\_container>
-    <flex\_\_item>
+<flex__container>
+    <flex__item>
         <content></content>
-    </flex\_\_item>
-</flex\_\_container>
-/\* CSS \*/
-.flex\_\_container {
+    </flex__item>
+</flex__container>
+/* CSS */
+.flex__container {
     display: flex;
 }
 .content {
     height: 100%
 }
 // 或
-.grid\_\_container {
+.grid__container {
     display: grid;
     grid-auto-flow: column;
 }
@@ -439,9 +439,9 @@ main {
 
 ```
 main {
-    flex-grow: 1; /\*容器有剩余空间时，main区域会扩展\*/
-    flex-shrink: 0; /\*容器有不足空间时，main区域不会收缩\*/
-    flex-basis: auto; /\*main区域高度的基准值为main内容自动高度\*/
+    flex-grow: 1; /*容器有剩余空间时，main区域会扩展*/
+    flex-shrink: 0; /*容器有不足空间时，main区域不会收缩*/
+    flex-basis: auto; /*main区域高度的基准值为main内容自动高度*/
 }
 ```
 
@@ -450,7 +450,7 @@ main {
 在 CSS Grid 布局中我们可以借助 1fr 让 <main> 区域根据 Grid 容器剩余空间来做计算。
 
 ```
-.grid\_\_container {
+.grid__container {
     display: grid;
     grid-template-rows: auto 1fr auto;
 }
@@ -475,7 +475,7 @@ main {
     <column></column>
     <column></column>
 </container>
-/\* CCSS \*/
+/* CCSS */
 .container {
     inline-size: 50vw;
     min-inline-size: 320px;
@@ -499,17 +499,17 @@ main {
 
 ```
 <!-- HTML -->
-<flex\_\_container>
-    <flex\_\_item></flex\_\_item>
-    <flex\_\_item></flex\_\_item>
-    <flex\_\_item></flex\_\_item>
-</flex\_\_container>
-/\* CSS \*/
-.flex\_\_container {
+<flex__container>
+    <flex__item></flex__item>
+    <flex__item></flex__item>
+    <flex__item></flex__item>
+</flex__container>
+/* CSS */
+.flex__container {
     inline-size: 50vw;
     display: flex;
 }
-.flex\_\_item {
+.flex__item {
     flex: 1;
 }
 ```
@@ -526,15 +526,15 @@ main {
 
 ```
 <!-- HTML -->
-<grid\_\_container>
-    <grid\_\_item></grid\_\_item>
-    <grid\_\_item></grid\_\_item>
-    <grid\_\_item></grid\_\_item>
-</grid\_\_container>
-/\* CSS \*/
-.grid\_\_container {
+<grid__container>
+    <grid__item></grid__item>
+    <grid__item></grid__item>
+    <grid__item></grid__item>
+</grid__container>
+/* CSS */
+.grid__container {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /\*这里的3表示具体的列数\*/
+    grid-template-columns: repeat(3, 1fr); /*这里的3表示具体的列数*/
 }
 ```
 
@@ -549,7 +549,7 @@ main {
 修复这种现象最简单的方式是在 Flex 容器或 Grid 容器显式设置一个 min-width（或 min-inline-size）：
 
 ```
-.flex\_\_container {
+.flex__container {
     min-inline-size: 300px;
 }
 ```
@@ -559,12 +559,12 @@ main {
 我们继续通过示例向大家展示。先来看 Flexbox 实现方案：
 
 ```
-.flex\_\_container {
+.flex__container {
     display: flex;
     flex-wrap: wrap;
 }
-.flex\_\_item {
-    flex: 0 1 calc((100vw - 18vh) / 4); /\* calc(100vw -18vh) / 4 是flex-basis的基准值 \*/
+.flex__item {
+    flex: 0 1 calc((100vw - 18vh) / 4); /* calc(100vw -18vh) / 4 是flex-basis的基准值 */
 }
 ```
 
@@ -577,7 +577,7 @@ main {
 基于该例，如果把 Flex 项目的 flex 值改成：
 
 ```
-.flex\_\_item {
+.flex__item {
     flex: 0 0 400px;
 }
 ```
@@ -589,7 +589,7 @@ main {
 反过来，如果 Flex 项目的值 flex 改成：
 
 ```
-.flex\_\_item {
+.flex__item {
     flex: 1 0 400px;
 }
 ```
@@ -601,7 +601,7 @@ main {
 在 Grid 中实现类似的效果要更复杂一点。可以使用 repeat() 函数，1fr 以及 auto-fit 等特性：
 
 ```
-.grid\_\_container {
+.grid__container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2vh;
@@ -935,13 +935,13 @@ footer {
 
 ```
 <!-- HTML -->
-<flex\_\_grid>
-    <flex\_\_row>
-        <flex\_\_item col4></flex\_\_item col4>
-        <flex\_\_item col4></flex\_\_item col4>
-        <flex\_\_item col4></flex\_\_item col4>
-    </flex\_\_row>
-</flex\_\_grid>
+<flex__grid>
+    <flex__row>
+        <flex__item col4></flex__item col4>
+        <flex__item col4></flex__item col4>
+        <flex__item col4></flex__item col4>
+    </flex__row>
+</flex__grid>
 ```
 
 注意，12 列网格中，一般同一行的列数值和刚好等于 12。比如上面的 HTML 结构，行中有三列，每列的宽度刚好四个网格宽度加两个列间距。并且在计算的时候有一套成熟的计算公式：
@@ -960,59 +960,59 @@ footer {
     --columns: 12;
     --span: 1;
 }
-.flex\_\_container {
+.flex__container {
     display: flex;
     flex-direction: column;
     padding-left: var(--gutter);
     padding-right: var(--gutter);
 }
-.flex\_\_row {
+.flex__row {
     display: flex;
-    margin-left: calc(var(--gutter) \* -1);
-    margin-right: calc(var(--gutter) \* -1);
+    margin-left: calc(var(--gutter) * -1);
+    margin-right: calc(var(--gutter) * -1);
 }
-.flex\_\_row + .flex\_\_row {
+.flex__row + .flex__row {
     margin-top: 2vh;
 }
-.flex\_\_item {
+.flex__item {
     flex: 1 1
-        calc((100% / var(--columns) - var(--gutter)) \* var(--span));
+        calc((100% / var(--columns) - var(--gutter)) * var(--span));
     margin: 0 var(--gutter);
 }
-.flex\_\_item1 {
+.flex__item1 {
     --span: 1;
 }
-.flex\_\_item2 {
+.flex__item2 {
     --span: 2;
 }
-.flex\_\_item3 {
+.flex__item3 {
     --span: 3;
 }
-.flex\_\_item4 {
+.flex__item4 {
     --span: 4;
 }
-.flex\_\_item5 {
+.flex__item5 {
     --span: 5;
 }
-.flex\_\_item6 {
+.flex__item6 {
     --span: 6;
 }
-.flex\_\_item7 {
+.flex__item7 {
     --span: 7;
 }
-.flex\_\_item8 {
+.flex__item8 {
     --span: 8;
 }
-.flex\_\_item9 {
+.flex__item9 {
     --span: 9;
 }
-.flex\_\_item10 {
+.flex__item10 {
     --span: 10;
 }
-.flex\_\_item11 {
+.flex__item11 {
     --span: 11;
 }
-.flex\_\_item12 {
+.flex__item12 {
     --span: 12;
 }
 ```
@@ -1027,9 +1027,9 @@ footer {
 
 ```
 <!-- HTML -->
-<grid\_\_container>
-    <grid\_\_item></grid\_\_item>
-</grid\_\_container>
+<grid__container>
+    <grid__item></grid__item>
+</grid__container>
 ```
 
 我们来看 CSS 代码：
@@ -1048,7 +1048,7 @@ footer {
     --gap: 10px;
     --span: 1;
 }
-.grid\_\_container {
+.grid__container {
     display: grid;
     grid-template-columns: repeat(var(--columns), 1fr);
     grid-template-rows: 1fr;
@@ -1056,7 +1056,7 @@ footer {
     padding-left: calc(var(--gap) / 2);
     padding-right: calc(var(--gap) / 2);
 }
-.grid\_\_item {
+.grid__item {
     min-block-size: 10vh;
     grid-column: span var(--span);
 }
@@ -1109,7 +1109,7 @@ footer {
 除了上述这种粗暴的方式，还可以更灵活一些，将 auto-fit、minmax() 以及 grid-auto-flow: dense 等来创建：
 
 ```
-.grid\_\_container {
+.grid__container {
     padding: 1em;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
@@ -1118,7 +1118,7 @@ footer {
 }
 ```
 
-对于 .grid\_\_item 可以通过 grid-column、grid-row 来控制网格项目的位置：
+对于 .grid__item 可以通过 grid-column、grid-row 来控制网格项目的位置：
 
 ![](https://mmbiz.qpic.cn/mmbiz_png/Z6bicxIx5naKyyTvoRqxFUicAtcfomMicicS1C2IA1xA6gCgTfaPWQFMGarH12ysiaT09o7GefS5y1cWjvg7ecFsZFw/640?wx_fmt=png)
 
@@ -1133,7 +1133,7 @@ footer {
 在 Web 布局中时常碰到两端对齐的需求。在 Flexbox 布局中，时常在 Flex 容器中显式设置 justify-content 的值：
 
 ```
-.flex\_\_container {
+.flex__container {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -1152,7 +1152,7 @@ footer {
 在 Flexbox 要实现上图这样的效果，只需要在 Flex 容器中添加一个伪元素：
 
 ```
-.flex\_\_container::after {
+.flex__container::after {
     content: "";
     display: flex;
     flex: 0 1 32vw;
@@ -1177,13 +1177,13 @@ footer {
 body {
     padding: 1vh;
 }
-.flex\_\_container {
+.flex__container {
     display: flex;
     flex-wrap: wrap;
     gap: 2vh;
     width: 100%;
 }
-.flex\_\_item {
+.flex__item {
     flex: 0 1 calc((100vw - 8vh) / 4);
 }
 ```
@@ -1202,7 +1202,7 @@ body {
 body {
     padding: 1vh;
 }
-.grid\_\_container {
+.grid__container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 1vh;
@@ -1233,11 +1233,11 @@ clam() 函数接受三个参数，即 clam(MIN, VAL, MAX)，其中 MIN 表示最
 
 ```
 .element {
-    /\*\*
-    \* MIN = 100px
-    \* VAL = 50vw ➜ 根据视窗的宽度计算
-    \* MAX = 500px
-    \*\*/
+    /**
+    * MIN = 100px
+    * VAL = 50vw ➜ 根据视窗的宽度计算
+    * MAX = 500px
+    **/
     width: clamp(100px, 50vw, 500px);
 }
 ```
@@ -1302,16 +1302,16 @@ clam() 函数接受三个参数，即 clam(MIN, VAL, MAX)，其中 MIN 表示最
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
     grid-gap: 1rem;
 }
-.brands\_\_item {
+.brands__item {
     background: #eee;
 }
-.brands\_\_item a {
+.brands__item a {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100%;
 }
-.brands\_\_item img {
+.brands__item img {
     width: 130px;
     height: 75px;
     object-fit: contain;
@@ -1321,7 +1321,7 @@ clam() 函数接受三个参数，即 clam(MIN, VAL, MAX)，其中 MIN 表示最
 这样就能实现上图的效果。你可能发现了，有些 Logo 图像带有背景颜色，如果让效果更好一些，可以把 CSS 混合模式相关的特性运用进来：
 
 ```
-.brands\_\_item img {
+.brands__item img {
     width: 130px;
     height: 75px;
     object-fit: contain;
