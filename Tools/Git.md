@@ -208,16 +208,31 @@ git archive master --prefix='hdcms/' --format=zip > hdcms.zip
 在命令行中输入以下代码（windows用户使用 Git Bash）
 
 ```
-ssh-keygen -t rsa
+// 检查 User目录下的 .ssh 文件夹中 是否存在 公钥 ,输入命令：
+cat ~/.ssh/id_rsa.pub
+// 创建ssh 公钥和私钥,输入下面命令之后按下三次回车，将会采用默认值
+ssh-keygen -t rsa -C "****@hotmail.com"
+// 拷贝你的公钥到你的粘贴板下
+clip < ~/.ssh/id_rsa.pub
 ```
 
 一直按回车键直到结束。系统会在`~/.ssh` 目录中生成  `id_rsa`和`id_rsa.pub`，即密钥`id_rsa`和公钥`id_rsa.pub`。
 
-**向GitHub添加秘钥**
+**向GitHub添加公钥钥*
 
 ![1526219105062](../assets/tools/1526219105062.png)
 
 点击 `New SSH key` 按钮，添加上面生成的 `id_rsa.pub` 公钥内容。
+
+
+
+**向阿里Code 添加公钥**
+
+> 阿里云Code 官网: https://code.aliyun.com
+
+![aliyun__ssh_public_key](../assets/tools/aliyun__ssh_public_key.png)
+
+
 
 #### 关联远程
 

@@ -281,6 +281,7 @@ Preferences → Key Bindings – User
 ```
 {
 	"auto_match_enabled": true,
+	"theme": "Spacegray.sublime-theme",
 	"color_scheme": "Packages/Theme - Spacegray/base16-ocean.dark.tmTheme",
 	"default_encoding": "UTF-8",
 	"font_size": 14,
@@ -291,7 +292,6 @@ Preferences → Key Bindings – User
 	],
 	"line_padding_bottom": 2,
 	"line_padding_top": 2,
-	"theme": "Spacegray.sublime-theme",
 	"update_check": false
 }
 ```
