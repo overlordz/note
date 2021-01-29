@@ -253,9 +253,73 @@
 
 
 
+#### 注意事项
+
+---
+
+##### ES中 同时使用should和must 导致只有must生效
+
+```
+{
+    "query": {
+        "bool": {
+            "should": [
+                {
+                    "match": {
+                        "name": "中国"
+                    }
+                },
+                {
+                    "match": {
+                        "aliasName": "中国特工"
+                    }
+                }
+            ],
+            "must": {
+                "term": {
+                    "isStatus": "3"
+                }
+            }
+        }
+    }
+}
+
+#将上面修改为：
+{
+    "query": {
+        "bool": {
+            "must": [
+                {
+                    "bool": {
+                        "should": [
+                            {
+                                "match": {
+                                    "name": "中国"
+                                }
+                            },
+                            {
+                                "match": {
+                                    "aliasName": "中国特工"
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "match": {
+                        "isStatus": "3"
+                    }
+                }
+            ]
+        }
+    }
+}
+```
+
 
 
 参考资料：
 
 - https://www.pianshen.com/article/1530756399/
 - http://www.mianshigee.com/tutorial/elasticsearch/30_existsmissing
+- https://www.cnblogs.com/ljhdo/p/4904430.html

@@ -287,3 +287,8 @@ $sock->run();
 
 ![](https://mmbiz.qpic.cn/mmbiz_gif/QibLP1rpwH8taIxEf8sOHwXhyGt97posD1tosERINDa5sKo9usH5ojRjcCy0TicuGjsibkj3GfCweViaZf230icHFFA/640?wx_fmt=gif)
 
+
+
+**其他资料延伸**
+
+- https://learnku.com/articles/36471
