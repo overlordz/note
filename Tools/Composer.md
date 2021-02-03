@@ -201,3 +201,16 @@ composer dump-autoload;
 composer dumpautoload
 ```
 
+
+
+### Composer 安装插件 报 swap 内存不足的错误
+
+```
+PHP Fatal error:  Allowed memory size of 1610612736 bytes exhausted (tried to allocate 266240 bytes) in phar:///usr/local/bin/composer/src/Composer/DependencyResolver/Pool.php on line 214
+
+Fatal error: Allowed memory size of 1610612736 bytes exhausted (tried to allocate 266240 bytes) in phar:///usr/local/bin/composer/src/Composer/DependencyResolver/Pool.php on line 214
+
+Check https://getcomposer.org/doc/articles/troubleshooting.md#memory-limit-errors for more info on how to handle out of memory errors.
+```
+
+解决版本：https://learnku.com/laravel/t/27985

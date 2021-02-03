@@ -1,14 +1,12 @@
-## windows安装方式
+## Windows安装方式
 
 #### 在线安装
-
-box下载地址：https://vagrantcloud.com/laravel/boxes/homestead/versions/7.1.0/providers/virtualbox.box
 
 > vagrant box add laravel/homestead
 
 ![image](../../assets/laravel/20190401162754.png)
 
-会有四个选项让你选择。这里我们用的varant box 就选3
+会有四个选项让你选择。这里我们用的 varant box 就选 **3**
 
 1) hyperv
 2) parallels
@@ -23,6 +21,11 @@ box下载地址：https://vagrantcloud.com/laravel/boxes/homestead/versions/7.1.
 
 #### 本地安装
 
+**官方box下载地址**：https://vagrantcloud.com/laravel/boxes/homestead/versions/10.1.1/providers/virtualbox.box
+
+如果下载太慢，可以我分享的百度链接：https://pan.baidu.com/s/1CLphRas6vTErDA9VHf5H_Q 
+提取码：`a432` 
+
 **方式一**
 
 步骤一：
@@ -30,7 +33,7 @@ box下载地址：https://vagrantcloud.com/laravel/boxes/homestead/versions/7.1.
 ![20190403175510](../../assets/laravel/20190403175510.png)
 
 ```
-> vagrant box add metadata.json
+vagrant box add metadata.json
 ```
 
 metadata.json 内容如下：
@@ -41,7 +44,7 @@ metadata.json 内容如下：
     "versions": 
     [
         {
-            "version": "7.1.10",
+            "version": "10.1.1",
             "providers": [
                 {
                   "name": "virtualbox",
@@ -55,23 +58,44 @@ metadata.json 内容如下：
 
 步骤二：
 
-```
+
 运行以下命令进入 Homestead 管理脚本的目录里：
-> cd Homestead
+```
+cd Homestead
+```
 
 使用以下命令创建新的虚拟机：
-> vagrant up
-```
 
+```
+vagrant up
+```
 
 **方式二**
 
 
 ```
-> vagrant box add laravel/homestead d:/code/homestead.box
+vagrant box add laravel/homestead E:/软件/VirtualBox/virtualbox10.1.1.box
 ```
 
-默认安装的box 镜像储存的位置：以我电脑为例在C:\Users\mengy\.vagrant.d\boxes
+使用vagrant box list命令可以看到，Vagrant盒子列表中就有了一个名为laravel/homestead的box盒子
+
+但是，列表中显示的laravel/homestead的版本号为0，我们要把它改成正确的版本号（10.1.1），可以打开C:\Users\meng\.vagrant.d\boxes\laravel-VAGRANTSLASH-homestead文件夹
+
+![](../../assets/Linux/practice/homestead/20210201101105.png)
+
+
+
+然后在该文件夹下新建一个叫metadata_url的空白文件 ，往文件的内容里添加以下链接： https://app.vagrantup.com/laravel/boxes/homestead
+
+![](../../assets/Linux/practice/homestead/20210201101306.png)
+
+
+
+保存好之后，我们再次使用vagrant box list 命令查看盒子列表，就会发现，laravel/homestead的版本号已经正确显示了
+
+![](../../assets/Linux/practice/homestead/20210201101339.png)
+
+
 
 
 ##### 安装 Homestead 管理脚本
@@ -83,24 +107,20 @@ clone管理脚本
 # git clone https://github.com/laravel/homestead.git
 # cd Homestead
 
-因为master不稳定所以切到使用打过标签的稳定版本 
-# git checkout v7.18.0	
-
 创建 Homestead.yaml 配置文件
 在E:\vagrant\homestead\homestead 执行如下语句：
-
 #init.bat （window中双击）
 或
 #bash init.sh
 
-注意：
-因为本地安装的 homestead.box 版本为0，所以需要修改下面步骤生成的配置文件 E:\vagrant\homestead\homestead\scripts\homestead.rb 以下内容
-
-    config.vm.box_version = settings["version"] ||= ">= 0"
-    
 使用以下命令创建新的虚拟机：
 # vagrant up
+
+因为Homestead 管理脚本 有对应的box要求，所以切到相对应的版本
+# git checkout v10.1.0	
 ```
+![](../../assets/Linux/practice/homestead/20210201104401.png)
+
 
 
 
@@ -283,4 +303,19 @@ folders:
 
 
 
-待整理：https://blog.csdn.net/k417699481/article/details/109675264
+#### Homestead 时间不是中国区时间设置
+
+1 打开VirtualBox，点击设置--》系统--》勾掉“硬件时钟使用国际标准时间”
+ 2 启动虚拟机，vagrant up
+ 3 vagrant ssh 进入虚拟机，su root  使用root用户(默认是没有设置密码，重新设置一个新的密码：sudo passwd root)
+ 4 dpkg-reconfigure tzdata  使用enter键进入bios设置
+ 5 使用上下键选择GMT-8，使用tab键选择ok后退出
+ 6 date   检测下时间是否同步
+
+
+
+参考链接：
+
+Laravel  官方中文文档：https://learnku.com/docs/laravel/8.x/homestead/9357
+
+CSDN博客：https://blog.csdn.net/k417699481/article/details/109675264

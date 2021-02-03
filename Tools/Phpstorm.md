@@ -161,7 +161,7 @@ Phpstorm中大量使用composer或命令行指令，所以需要设置合适的p
 
 laravel-ide-helper 用于实现方便的代码提示功能，详细[查看插件官网](https://github.com/barryvdh/laravel-ide-helper)
 
-使用composer安装插件
+使用composer安装插件(https://github.com/barryvdh/laravel-ide-helper/tree/v2.6.0)
 
 ```
 composer require --dev barryvdh/laravel-ide-helper
@@ -172,6 +172,15 @@ composer require --dev barryvdh/laravel-ide-helper
 ```
 php artisan ide-helper:generate
 ```
+
+如果执行上面错误，是因为没有生成配置文件
+
+```
+php artisan vendor:publish --provider="Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider" --tag=config
+php artisan config:cache
+```
+
+
 
 ### 其他插件
 
