@@ -314,6 +314,23 @@ folders:
 
 
 
+**问题处理：**
+
+### PHP Fatal error: Allowed memory size of 1610612736 bytes exhausted (tried to allocate 4096 bytes)
+
+php.ini中 memory_limit设置小了，
+
+1、直接修改php.ini，重启php-fpm生效
+
+2、php -d memory_limit=-1 /usr/local/bin/composer install  
+
+路径/usr/local/bin/composer  通过whereis composer可找到
+
+3、重启php：sudo service php7.1-fpm reload
+
+
+
+
 参考链接：
 
 Laravel  官方中文文档：https://learnku.com/docs/laravel/8.x/homestead/9357

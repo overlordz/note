@@ -67,7 +67,7 @@ tinker
 vendor:publish
     执行第三方包的publish指令。publish指令的主要作用是拷贝第三方包的assets文件（可能是config文件、view文件等）到项目目录中。publish指令通常定义在xxxServiceProvider.php的boot()方法中。
 
-    以zizaco/entrust包为例，在EntrustServiceProvider.php中定义的publish指令，其意义是拷贝entrust包内的config/config.php文件到项目配置目录（app/config/）下，并命名为entrust.php。
+    以zizaco/entrust包为例，在EntrustServiceProvider.php中定义的publish指令，其意义是拷贝entrust包内的config/config.php文件到项目配置目录（app/config/）下，并命名为entrust.php。	
     
     // 执行所有第三方包的publish指令
     php artisan vendor:publish
