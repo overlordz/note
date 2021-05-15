@@ -17,6 +17,10 @@ php artisan make:command SendEmails
 ```php
 // 命令行的名称及签名
 protected $signature = 'email:send {paramsName} {paramsNameTwo}';
+// 可选参数...
+email:send {user?}
+// 带有默认值的可选参数...
+email:send {user=foo}
 
 // 命令行的描述
 protected $description = 'Send drip e-mails to a user';
