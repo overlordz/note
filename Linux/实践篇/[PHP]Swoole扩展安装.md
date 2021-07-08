@@ -1,3 +1,5 @@
+> 官方安装地址：https://wiki.swoole.com/#/environment
+
 ## 安装方式一：编译安装
 
 #### PHP版本依赖
@@ -10,25 +12,31 @@
 
   不依赖 PHP 的 stream、sockets、pcntl、posix、sysvmsg 等扩展。PHP 只需安装最基本的扩展即可
 
-#### 环境
 
-用nginx + php-fpm,性能更强大,配置更方便,并且为了跟上php的步伐,也使用了比较新的php版本,我php版本7.0.26。
 
-- centos7
-- php7.0.26
-- nginx/1.12.2
-- php-fpm
+## [安装准备](https://wiki.swoole.com/#/environment?id=安装准备)
 
-#### 下载 swoole
+安装前必须保证系统已经安装了下列软件
 
-> wget https://github.com/swoole/swoole-src/archive/v2.1.3.tar.gz
+- `php-7.1` 或更高版本
+- `gcc-4.8` 或更高版本
+- `make`
+- `autoconf`
 
-解压: tar -zxvf v2.1.3.tar.gz
+
+
+#### 下载 swoole 源码
+
+- https://github.com/swoole/swoole-src/releases
+- https://pecl.php.net/package/swoole
+- https://gitee.com/swoole/swoole/tags
+
+下载源代码包后，在终端进入源码目录，执行下面的命令进行编译和安装
 
 
 #### 编译&安装
 
-cd swoole-src-2.1.3/ 下,
+cd swoole-src 下,
 
 1.使用phpize来生成php编译配置
 
@@ -39,10 +47,18 @@ cd swoole-src-2.1.3/ 下,
 命令执行如下：
 
 ```
-[root@php7 swoole-src-2.1.3]# phpize
-[root@php7 swoole-src-2.1.3]# ./configure
-[root@php7 swoole-src-2.1.3]# make && make install
+[root@php7 swoole-src]# phpize
+[root@php7 swoole-src]# ./configure --with-php-config=/usr/bin/php-config
+[root@php7 swoole-src]# make && make install
 ```
+
+备注：
+
+通过./configure 中的 --with-php-config 指定安装路径
+
+通过命令找出 PHP 安装路径
+
+>  which php-config
 
 4.make install后，如果正确，会出现以下内容
 
@@ -58,6 +74,8 @@ Installing header files:          /usr/local/php/include/php/
 extension=swoole.so
 ```
 
+或 直接在 /etc/php.d/ 加上 swoole.ini 文件
+
 #### 重启服务
 
 新增php模块后，需要重新启动nginx和php-fpm服务，才会生效。
@@ -67,7 +85,9 @@ systemctl restart php-fpm
 systemctl restart nginx
 ```
 
-最后通过php -m或phpinfo()来查看是否成功
+查看扩展是否安装成功
+
+> php -m | grep swoole
 
 
 
