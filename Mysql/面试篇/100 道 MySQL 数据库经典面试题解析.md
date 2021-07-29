@@ -179,18 +179,7 @@
 #### 方案一：如果 id 是连续的，可以这样，返回上次查询的最大记录 (偏移量)，再往下 limit
 
 ```
-select
- id
-，
-name 
-from
- employee 
-where
- id
->
-1000000
- limit 
-10.
+select id,name from employee where id > 1000000 limit 10;
 ```
 
 #### 方案二：在业务允许的情况下限制页数：
@@ -200,50 +189,19 @@ where
 #### 方案三：order by + 索引（id 为索引）
 
 ```
-select
- id
-，
-name 
-from
- employee order 
-by
- id  limit 
-1000000
-，
-10
+select id,name from employee order by id limit 1000000,10;
 ```
 
 #### 方案四：利用延迟关联或者子查询优化超多分页场景。（先快速定位需要获取的 id 段，然后再关联）
 
 ```
-SELECT a
-.*
- FROM employee a
-,
- 
-(
-select
- id 
-from
- employee 
-where
- 
-条件
- LIMIT 
-1000000
-,
-10
- 
-)
- b 
-where
- a
-.
-id
-=
-b
-.
-id
+SELECT
+	a.* 
+FROM
+	employee a,
+	( SELECT id FROM employee WHERE 条件 LIMIT 1000000, 10 ) b 
+WHERE
+	a.id = b.id
 ```
 
 ### 9. 如何选择合适的分布式主键方案呢？
@@ -289,22 +247,7 @@ Mysql 默认的事务隔离级别是可重复读 (Repeatable Read)
 悲观锁思想就是，当前线程要进来修改数据时，别的线程都得拒之门外~ 比如，可以使用 select…for update ~
 
 ```
-select
- 
-*
- 
-from
- 
-User
- 
-where
- name
-=‘
-jay
-’
- 
-for
- update
+select * from user where name = 'jay' for update
 ```
 
 以上这条 sql 语句会锁定了 User 表中所有符合检索条件（name=‘jay’）的记录。本次事务提交之前，别的线程都无法修改这些记录。
@@ -414,20 +357,7 @@ id 为主键，select for update 1270070 这条记录时，再开一个事务对
 当我们创建一个组合索引的时候，如 (k1,k2,k3)，相当于创建了（k1）、(k1,k2) 和(k1,k2,k3)三个索引，这就是最左匹配原则。
 
 ```
-select
- 
-*
- 
-from
- table 
-where
- k1
-=
-A AND k2
-=
-B AND k3
-=
-D
+select * from  table where  k1 = A AND k2 = B AND k3 = D
 ```
 
 有关于复合索引，我们需要关注查询 Sql 条件的顺序，确保最左匹配原则有效，同时可以删除不必要的冗余索引。
@@ -439,22 +369,7 @@ D
 假设表 A 表示某企业的员工表，表 B 表示部门表，查询所有部门的所有员工，很容易有以下 SQL:
 
 ```
-select
- 
-*
- 
-from
- A 
-where
- deptId 
-in
- 
-(
-select
- deptId 
-from
- B
-);
+select * from A where deptId in ( select deptId from B);
 ```
 
 这样写等价于：
@@ -479,37 +394,12 @@ from
           }
        }
     }
-
 ```
 
 显然，除了使用 in，我们也可以用 exists 实现一样的查询功能，如下：
 
 ```
-select
- 
-*
- 
-from
- A 
-where
- exists 
-(
-select
- 
-1
- 
-from
- B 
-where
- A
-.
-deptId 
-=
- B
-.
-deptId
-);
- 
+select * from A WHERE EXISTS ( SELECT 1 FROM B WHERE A.deptId = B.deptId );
 ```
 
 因为 exists 查询的理解就是，先执行主查询，获得数据后，再放到子查询中做条件验证，根据验证结果（true 或者 false），来决定主查询的数据结果是否得意保留。
@@ -560,7 +450,9 @@ MVCC, 多版本并发控制, 它是通过读取历史版本的数据，来降低
 
 ### 23. MYSQL 的主从延迟，你怎么解决？
 
-嘻嘻，先复习一下主从复制原理吧，如图：![](https://mmbiz.qpic.cn/mmbiz_png/sMmr4XOCBzHb5ZvMdLOvjicVicD6zLAPaBwh3oiaibRLvVAXicia6QFy8ACcZ22ia8QUzPQmpFMQ9RTgWy7Q2nZiaDaS7g/640?wx_fmt=png)主从复制分了五个步骤进行：
+嘻嘻，先复习一下主从复制原理吧，如图：![](https://mmbiz.qpic.cn/mmbiz_png/sMmr4XOCBzHb5ZvMdLOvjicVicD6zLAPaBwh3oiaibRLvVAXicia6QFy8ACcZ22ia8QUzPQmpFMQ9RTgWy7Q2nZiaDaS7g/640?wx_fmt=png)
+
+主从复制分了五个步骤进行：
 
 *   步骤一：主库的更新事件 (update、insert、delete) 被写到 binlog
 
@@ -965,21 +857,7 @@ column
 基于索引来完成行锁的。
 
 ```
-select
- 
-*
- 
-from
- t 
-where
- id 
-=
- 
-666
- 
-for
- update
-;
+select * from t where id  = 666 for update;
 ```
 
 for update 可以根据条件来完成行锁锁定，并且 id 是有索引键的列，如果 id 不是索引键那么 InnoDB 将实行表锁。
