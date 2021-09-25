@@ -685,7 +685,7 @@ $ db.<collection_name>.find( query, options ).explain(options)
 
 `"stage" : "COLLSCAN"`, 表示全集合扫描
 
-![](https://raw.githubusercontent.com/Zhenye-Na/img-hosting-picgo/master/img/image-20200506205714154.png)
+![](../../assets/Cache/MongoDB/image-20200506205714154.png)
 
 **添加索引之后**
 

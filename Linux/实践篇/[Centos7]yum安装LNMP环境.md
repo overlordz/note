@@ -2,18 +2,23 @@
 
 #### yum安装LNMP流程
 
-    1、配置yum源，本地源，线上源
-    2、yum -y install nginx php php-fpm mysql mysql-server 
-    3、配置nginx，将.php的请求转发给php-fpm
-    4、思考，找日志
+1. 配置yum源，本地源，线上源
+2. yum -y install nginx php php-fpm mysql mysql-server 
+3. 配置nginx，将.php的请求转发给php-fpm
+4. 思考，找日志
+
+
 
 #### yum版优缺点
 
-    有点：
-    方便快捷、不用考虑包依赖
-    
-    缺点：
-    不能按需安装、受源的限制、安装的版本也比较低
+优点：
+
+​		方便快捷、不用考虑包依赖
+
+缺点：
+		不能按需安装、受源的限制、安装的版本也比较低
+
+
 
 ## yum源的更换
 
@@ -32,7 +37,7 @@ sohu的源：http://mirrors.sohu.com/help/CentOS-Base-sohu.repo
 阿里云的源：http://mirrors.aliyun.com/repo/Centos-7.repo 
 
 更换源地址
-    wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo
+wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo
 ```
 
 #### 执行yum源更新命令
@@ -45,16 +50,20 @@ yum makecache
 yum update
 ```
 
+
+
 ## yum安装NGINX
 
 > 自centos6.9开始，nginx软件没有集成在安装盘,所以nginx源可以直接选择官网
 
-```
 下载地址：http://nginx.org/en/linux_packages.html
+文档说明：http://nginx.org/en/linux_packages.html#RHEL-CentOS
 
+```
 创建nginx源
 vi /etc/yum.repos.d/nginx.repo
 
+内容如下：
 [nginx-stable]
 name=nginx stable repo
 baseurl=http://nginx.org/packages/centos/$releasever/$basearch/
@@ -69,27 +78,135 @@ gpgcheck=1
 enabled=0
 gpgkey=https://nginx.org/keys/nginx_signing.key
 
+然后安装
+sudo yum install nginx
+
+查看状态
+systemctl status nginx
+
+设置开机启动
+systemctl enable nginx
 ```
+
+
 
 ## yum安装PHP
 
+#### 方式一：
+
+1. 安装所需的依赖
+
+    ```
+    yum install epel-release yum-utils -y
+    ```
+
+2. 会对系统类型安装相应的包
+
+   centos 7 
+
+   ```
+   yum -y install http://rpms.remirepo.net/enterprise/remi-release-7.rpm 
+   ```
+
+   centos 8
+
+   ```
+   yum -y install http://rpms.remirepo.net/enterprise/remi-release-8.rpm
+   ```
+
+3. 安装php7.4及相关扩展
+
+  ```
+  yum -y install php74-php-fpm php74-php-xml php74-php-cli php74-php-gd php74-php-json php74-php-mysql php74-php-sqlite3 php74-php-bz2 php74-php-mbstring php74-php-zip php74-php-pecl-redis4
+  ```
+
+4. 开启服务与使用
+
+    启动
+
+    ```
+    systemctl start php74-php-fpm.service
+    ```
+
+    设置开启启动
+
+    ```
+    systemctl enable php74-php-fpm.service
+    ```
+
+    查看扩展
+
+    ```
+    php74 -m
+    ```
+
+5. 扩展使用
+
+    查看当前的yum中有哪些php扩展
+
+    ```
+    sudo yum search php74 | more
+    ```
+
+    匹配查看某种源的包名
+
+    ```
+    sudo yum search php74 | egrep 'fpm|gd|mysql|memcache'
+    ```
+
+    安装扩展
+
+    ```
+    yum -y install php74-php-pecl-redis4
+    ```
+
+#### 方式二：
+
+安装所需的依赖
+
 ```
-1、yum install epel-release [安装所需的依赖]
-2、yum install http://rpms.remirepo.net/enterprise/remi-release-7.rpm [安装php72的源]
-3、yum install yum-utils
-4、yum-config-manager --enable remi-php72 [查看php72的扩展]
-5、yum update  [更新yum源]
-6、sudo yum search php72 | more [查看当前的yum中有哪些php扩展]
-   sudo yum search php72 | egrep 'fpm|gd|mysql|memcache' [匹配查看某种源的包名]
-7、sudo yum install php72 [安装php72]
-8、yum install php72-php-fpm php72-php-gd php72-php-json php72-php-mbstring php72-php-mysqlnd php72-php-xml php72-php-xmlrpc php72-php-opcache  [安装php的扩展]
-9、php72  --version [查看php的版本]
-10、php72  -m [查看php的扩展]
-11、ps aux | grep php-fpm  [查看php-fpm的启动情况]
-12、systemctl start php72-php-fpm.service [启动php-fpm的服务  重启:restart  停止:stop]
-13、systemctl enable php72-php-fpm.service  [添加php为开启启动项]
-14、systemctl status php72-php-fpm.service [查看php-fpm的状态]
+yum install epel-release yum-utils -y
 ```
+
+安装REMI源
+
+```
+rpm -ivh https://mirrors.tuna.tsinghua.edu.cn/remi/enterprise/remi-release-7.rpm
+```
+
+查看可以安装的PHP版本：
+
+```
+yum repolist all | grep php
+```
+
+设置默认安装的版本：
+
+```
+yum-config-manager --enable remi-php74
+```
+
+安装php
+
+```
+yum -y install php
+```
+
+查看PHP版本
+
+```
+php -v
+```
+
+查看已安装的模块
+
+```
+php -m
+```
+
+安装扩展跟方式一一样操作
+
+
 
 ## 配置php-fpm
 
@@ -153,23 +270,23 @@ nginx.conf的设定如下
 
 ```
 server {
-        listen 80;
-        server_name laravel.test;
-        index index.php index.html;
-        root  /usr/share/nginx/html/laravel/;
+    listen 80;
+    server_name laravel.test;
+    index index.php index.html;
+    root  /usr/share/nginx/html/laravel/;
 
-        location / {
-                if (!-e $request_filename) {
-                    rewrite ^/(.*)$ /index.php;
-                }
+    location / {
+        if (!-e $request_filename) {
+        	rewrite ^/(.*)$ /index.php;
         }
+    }
 
-        location ~ \.php(.*)$ {
-                fastcgi_pass phpfpm;  // phpfpm =>nginx.conf 中的 upstream "phpfpm"
-                fastcgi_index index.php;
-                fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
-                include fastcgi_params;
-        }
+    location ~ \.php(.*)$ {
+        fastcgi_pass phpfpm;  // phpfpm =>nginx.conf 中的 upstream "phpfpm"
+        fastcgi_index index.php;
+        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+        include fastcgi_params;
+    }
 }
 ```
 

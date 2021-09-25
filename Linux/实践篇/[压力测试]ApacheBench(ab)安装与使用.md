@@ -9,7 +9,9 @@
 #### Centos：
 
 ```
-# yum -y install httpd-tools
+# 查看软件
+yum search httpd | grep tools
+yum -y install httpd-tools
 ```
 
 ### Ubuntu：

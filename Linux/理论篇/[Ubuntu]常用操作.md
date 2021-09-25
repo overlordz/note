@@ -58,6 +58,7 @@ koala   ALL=(ALL:ALL) ALL（新增）
 
 > apt install php版本号-扩展包名
 
-例如：安装zip扩展
+例如：安装zip、bcmatch 扩展
 
-$ sudo apt-get install php7.1-zip
+$ sudo apt-get install php7.1-zip php-bcmatch
+

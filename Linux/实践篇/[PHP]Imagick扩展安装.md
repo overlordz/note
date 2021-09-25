@@ -98,7 +98,7 @@
 extension_dir => /usr/lib/php/20180731 => /usr/lib/php/20180731
 ```
 
-6. 把 **redis.so** 扩展模块移入 PHP 扩展目录中
+6. 把 **imagick.so** 扩展模块移入 PHP 扩展目录中
 
 ```shell
 # sudo cp modules/imagick.so /usr/lib/php/20180731/
