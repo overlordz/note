@@ -52,7 +52,7 @@ yum update
 
 
 
-## yum安装NGINX
+## 安装NGINX
 
 > 自centos6.9开始，nginx软件没有集成在安装盘,所以nginx源可以直接选择官网
 
@@ -90,7 +90,7 @@ systemctl enable nginx
 
 
 
-## yum安装PHP
+## 安装PHP
 
 #### 方式一：
 
@@ -205,6 +205,52 @@ php -m
 ```
 
 安装扩展跟方式一一样操作
+
+#### 安装后的修改
+
+> 由于 yum 不能直接识别 php -v  需要 **添加PHP环境变量**
+
+##### 1. 当前用户修改：
+
+```
+vim ~/.bashrc
+```
+
+底部增加如下内容：
+
+```
+export PATH=/opt/remi/php74/root/usr/bin:$PATH
+```
+
+刷新一下环境变量
+
+```
+source ~/.bashrc
+```
+
+##### 2. 全局环境变量修改
+
+```
+vim /etc/profile
+```
+
+底部增加如下内容：
+
+```
+export PATH=/opt/remi/php74/root/usr/bin:$PATH
+```
+
+刷新全局环境变量
+
+```
+source /etc/profile 
+```
+
+##### 3. 软连接映射
+
+```
+sudo ln -s /opt/remi/php74/root/usr/bin/php /usr/bin/php
+```
 
 
 
@@ -358,13 +404,26 @@ server {
     # rpm -e php-common-5.1.6-27.el5_5.3
     
     再用
-    
     # php -v
     
     查看版本信息已经没有提示
 ```
 
-
 ## 安装MySql
 
+直接安装
+
     yum -y install mysql-server mysql
+
+选择特定版本mysql的操作：
+
+https://www.cnblogs.com/zhaoyunlong/p/10146188.html
+
+https://blog.csdn.net/evil_wdpp/article/details/107709376
+
+https://www.cnblogs.com/suesky/p/12767313.html
+
+https://dev.mysql.com/doc/mysql-repo-excerpt/5.6/en/linux-installation-yum-repo.html
+
+查看端口号
+netstat -nltp | grep mysqld
