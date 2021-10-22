@@ -185,8 +185,7 @@ user nginx;
 解决办法二：解决办法一还没有解决，那么其原因有可能是“SELinux”设置为开启状态（enabled）的原因，将状态改为关闭
 
 查看本机SELinux的开启状态
-    # cd /usr/sbin/
-    # sestatus -v
+    # /usr/sbin/sestatus -v
 
 临时关闭（不用重启）
 	# setenforce 0

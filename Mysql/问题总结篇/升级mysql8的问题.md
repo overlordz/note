@@ -66,3 +66,5 @@
 ##### 方法3、非root用户登录，授权并创建一个新用户使用
 
     # GRANT ALL PRIVILEGES ON *.* TO '账号'@'%' IDENTIFIED BY '密码' WITH GRANT OPTION; 
+    # flush privileges;
+

@@ -114,7 +114,12 @@ $ git push --tags	#上传所有标签
 
 > 当前分支对比某个提交的code进行对比，并生成对应的压缩包（7z、zip）
 
-$ git diff HEAD d5ae2d412e3c0dc5e7a3c5d610b0e18a8270a23f --name-only | xargs tar -rf gitee.7z
+```
+# zip压缩包，要确定已安装zip
+git diff d3e0ecd b916f17 --name-only | xargs zip 2021-10-9-compress.zip
+# tar压缩包
+git diff d3e0ecd b916f17 --name-only | xargs tar -zcvf 2021-10-9-compress.tar.gz
+```
 
 ##### 2、直接打包
 
