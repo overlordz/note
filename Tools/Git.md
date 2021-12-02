@@ -269,6 +269,14 @@ clip < ~/.ssh/id_rsa.pub
    git remote rm origin
    ```
 
+6. 修改远程仓库地址
+
+   ```
+   git remote set-url origin http://git.cloud.com/php/mp.git
+   ```
+
+   
+
 > 通过 clone 克隆的仓库，本地与远程已经自动关联，上面几步都可以省略。
 
 #### pull
