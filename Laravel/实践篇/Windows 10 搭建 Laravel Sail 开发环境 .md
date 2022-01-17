@@ -316,6 +316,16 @@ deb-src http://mirrors.ustc.edu.cn/ubuntu/ focal-backports main restricted unive
 
 
 
+#### 提示:[WSL2-参考的对象类型不支持尝试的操作。](https://www.cnblogs.com/fanqisoft/p/13028976.html)
+
+在管理员模式下运行命令后重启即可
+
+```
+netsh winsock reset
+```
+
+
+
 **参考资料：**
 
 > [适用于 Linux 的 Windows 子系统安装指南]( https://docs.microsoft.com/zh-cn/windows/wsl/install-win10)

@@ -88,6 +88,28 @@ systemctl status nginx
 systemctl enable nginx
 ```
 
+### 错误处理：
+
+#### CentOS7使用yum安装nginx报错：获取 GPG 密钥失败：[Errno 14] curl#60 - "Peer's Certificate has expired."
+
+**根据提示解决：** 可以使用rpm --import https://nginx.org/keys/nginx_signing.key来解决，但是会出现导入失败，可能是网络问题 **我们先进行下载再进行导入key**
+
+```
+wget https://nginx.org/keys/nginx_signing.key --no-check-certificate
+rpm --import nginx_signing.key
+```
+
+
+
+不能访问Nginx处理
+
+```
+关掉防火墙
+systemctl stop firewalld.service
+```
+
+
+
 
 
 ## 安装PHP
@@ -117,7 +139,7 @@ systemctl enable nginx
 3. 安装php7.4及相关扩展
 
   ```
-  yum -y install php74-php-fpm php74-php-xml php74-php-cli php74-php-gd php74-php-json php74-php-mysql php74-php-sqlite3 php74-php-bz2 php74-php-mbstring php74-php-zip php74-php-pecl-redis4
+  yum -y install php74-php-fpm php74-php-xml php74-php-cli php74-php-gd php74-php-json php74-php-mysql php74-php-sqlite3 php74-php-bz2 php74-php-mbstring php74-php-zip php74-php-pecl-redis5
   ```
 
 4. 开启服务与使用
@@ -157,7 +179,7 @@ systemctl enable nginx
     安装扩展
 
     ```
-    yum -y install php74-php-pecl-redis4
+    yum -y install php74-php-pecl-redis5
     ```
 
 #### 方式二：

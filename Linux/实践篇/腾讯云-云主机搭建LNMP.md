@@ -117,12 +117,12 @@ vi /etc/yum.repos.d/MariaDB.repo
 > 说明：不同操作系统的 MariaDB 软件库不同，您可前往 [MariaDB 官网](https://downloads.mariadb.org/) 获取其他版本操作系统的 MariaDB 软件库安装信息。
 
 ```
-# MariaDB 10.4 CentOS repository list - created 2019-11-05 11:56 UTC
-# http://downloads.mariadb.org/mariadb/repositories/
+# MariaDB 10.6 CentOS repository list - created 2021-12-15 15:06 UTC
+# https://mariadb.org/download/
 [mariadb]
 name = MariaDB
-baseurl = http://yum.mariadb.org/10.4/centos7-amd64
-gpgkey=https://yum.mariadb.org/RPM-GPG-KEY-MariaDB
+baseurl = https://mirrors.aliyun.com/mariadb/yum/10.6/centos7-amd64
+gpgkey=https://mirrors.aliyun.com/mariadb/yum/RPM-GPG-KEY-MariaDB
 gpgcheck=1
 ```
 
