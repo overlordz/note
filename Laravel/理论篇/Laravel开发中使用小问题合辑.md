@@ -58,4 +58,22 @@ Illuminate\Database\QueryException  : SQLSTATE[42000]: Syntax error or access vi
 
 > model::insert()
 
-成功返回值是bool
+成功返回值是bool1
+
+
+
+#### Laravel 定时任务 crontab 一直不执行
+
+> crontab环境变量和系统变量不一致问题，建议使用完整路径
+
+参考文章路径：https://learnku.com/laravel/t/45687
+
+```
+有问题：
+* * * * * cd /www/item-dir && php artisan schedule:run >> /dev/null 2>&1
+执行正常的：
+* * * * * cd /www/item-dir && /usr/local/bin/php artisan schedule:run >> /dev/null 2>&1
+```
+
+
+
