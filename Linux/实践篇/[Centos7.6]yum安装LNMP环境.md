@@ -64,22 +64,16 @@ yum update
 vi /etc/yum.repos.d/nginx.repo
 
 内容如下：
-[nginx-stable]
-name=nginx stable repo
+[nginx]
+name=nginx repo
 baseurl=http://nginx.org/packages/centos/$releasever/$basearch/
 gpgcheck=1
 enabled=1
 gpgkey=https://nginx.org/keys/nginx_signing.key
-
-[nginx-mainline]
-name=nginx mainline repo
-baseurl=http://nginx.org/packages/mainline/centos/$releasever/$basearch/
-gpgcheck=1
-enabled=0
-gpgkey=https://nginx.org/keys/nginx_signing.key
+module_hotfixes=true
 
 然后安装
-sudo yum install nginx
+yum install -y nginx
 
 查看状态
 systemctl status nginx
@@ -99,16 +93,12 @@ wget https://nginx.org/keys/nginx_signing.key --no-check-certificate
 rpm --import nginx_signing.key
 ```
 
-
-
 不能访问Nginx处理
 
 ```
 关掉防火墙
 systemctl stop firewalld.service
 ```
-
-
 
 
 
@@ -124,7 +114,7 @@ systemctl stop firewalld.service
 
 2. 会对系统类型安装相应的包
 
-   centos 7 
+   centos 7 [建议使用]
 
    ```
    yum -y install http://rpms.remirepo.net/enterprise/remi-release-7.rpm 
@@ -139,7 +129,7 @@ systemctl stop firewalld.service
 3. 安装php7.4及相关扩展
 
   ```
-  yum -y install php74-php-fpm php74-php-xml php74-php-cli php74-php-gd php74-php-json php74-php-mysql php74-php-sqlite3 php74-php-bz2 php74-php-mbstring php74-php-zip php74-php-pecl-redis5
+  yum -y install php74-php-fpm php74-php-xml php74-php-cli php74-php-gd php74-php-json php74-php-mysql php74-php-sqlite3 php74-php-bz2 php74-php-mbstring php74-php-zip php74-php-bcmath php74-php-pecl-redis5
   ```
 
 4. 开启服务与使用
@@ -278,7 +268,9 @@ sudo ln -s /opt/remi/php74/root/usr/bin/php /usr/bin/php
 
 ## 配置php-fpm
 
-yum安装php-fpm后的默认配置文件为 /etc/php-fpm.d/www.conf
+上面yum安装php-fpm后的默认配置文件为 
+
+> /etc/opt/remi/php74/php-fpm.d/www.conf
 
 下面介绍需要进行配置的几个参数。
 
@@ -384,54 +376,34 @@ server {
     /var/lib/php/wsdlcache
 
 
-​    
-## 卸载yum 安装的php
-
-#### 删除
-
-1、如果之前编译安装了php，则进入安装位置直接删除
-
-> 一般安装位置为/usr/local/php
-
-2、如果之前使用yum安装的，则运行
-
-> yum remove php php-common 
-
-```
-注意：
-    如果使用删除命令之后再用
-    
-    #php -v
-    
-    还是会看到有版本信息的，必须强制删除，使用下面命令查看全部php软件包
-    
-    #rpm -qa|grep php
-    
-    提示如下：
-    #php-pdo-5.1.6-27.el5_5.3
-    #php-mysql-5.1.6-27.el5_5.3
-    #php-xml-5.1.6-27.el5_5.3
-    #php-cli-5.1.6-27.el5_5.3
-    #php-common-5.1.6-27.el5_5.3
-    #php-gd-5.1.6-27.el5_5.3
-    
-    注意卸载要先卸载没有依赖的
-    pdo是mysql的依赖项；common是gd的依赖项；
-    所以正确的卸载顺序是：
-    # rpm -e php-mysql-5.1.6-27.el5_5.3
-    # rpm -e php-pdo-5.1.6-27.el5_5.3
-    # rpm -e php-xml-5.1.6-27.el5_5.3
-    # rpm -e php-cli-5.1.6-27.el5_5.3
-    # rpm -e php-gd-5.1.6-27.el5_5.3
-    # rpm -e php-common-5.1.6-27.el5_5.3
-    
-    再用
-    # php -v
-    
-    查看版本信息已经没有提示
-```
-
 ## 安装MySql
+
+安装mysql5.7
+
+```
+rpm --import https://repo.mysql.com/RPM-GPG-KEY-mysql-2022
+wget https://dev.mysql.com/get/mysql57-community-release-el7-9.noarch.rpm
+yum install mysql57-community-release-el7-9.noarch.rpm -y
+yum install mysql-community-server -y
+systemctl enable mysqld
+service mysqld start
+```
+
+查看初次密码
+
+```
+grep 'password' /var/log/mysqld.log
+```
+
+修改密码
+
+```
+alter user 'root'@'localhost' identified by 'editPassword';
+```
+
+
+
+
 
 直接安装
 
