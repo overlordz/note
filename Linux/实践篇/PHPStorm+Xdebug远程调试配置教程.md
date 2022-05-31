@@ -1,6 +1,8 @@
 ## Phpstorm + Xdebug 远程调试配置教程
 
-####  # 下载对应版本的 Xdebug：
+### # php 自定义编译安装
+
+####  ## 下载对应版本的 Xdebug：
 
 xdebug官网下载地址：https://xdebug.org/download.php
 
@@ -53,6 +55,88 @@ xdebug.remote_host="192.168.1.23"
 
 
 
+### # php yum安装
+
+本机安装的是php 7.4，同样使用yum安装xdebug：
+
+> yum list | grep xdebug
+
+```
+[root@localhost xdebug-3.1.4]# yum list|grep xdebug
+php-composer-xdebug-handler.noarch       1.4.6-1.el7                   epel     
+php-pecl-xdebug.x86_64                   2.2.7-1.el7                   epel     
+php54-php-pecl-xdebug.x86_64             2.4.1-1.el7.remi              remi-safe
+php55-php-pecl-xdebug.x86_64             2.5.5-1.el7.remi              remi-safe
+php56-php-pecl-xdebug.x86_64             2.5.5-1.el7.remi              remi-safe
+php70-php-pecl-xdebug.x86_64             2.9.0-1.el7.remi              remi-safe
+php71-php-pecl-xdebug.x86_64             2.9.8-1.el7.remi              remi-safe
+php72-php-pecl-xdebug.x86_64             2.9.8-1.el7.remi              remi-safe
+php72-php-pecl-xdebug3.x86_64            3.1.4-1.el7.remi              remi-safe
+php73-php-pecl-xdebug.x86_64             2.9.8-1.el7.remi              remi-safe
+php73-php-pecl-xdebug3.x86_64            3.1.4-1.el7.remi              remi-safe
+php74-php-pecl-xdebug.x86_64             2.9.8-1.el7.remi              remi-safe
+php74-php-pecl-xdebug3.x86_64            3.1.4-1.el7.remi              remi-safe
+php80-php-pecl-xdebug3.x86_64            3.1.4-1.el7.remi              remi-safe
+php81-php-pecl-xdebug3.x86_64            3.1.4-1.el7.remi              remi-safe
+```
+
+再次执行以下命令
+
+> yum install php74-php-pecl-xdebug3
+
+由于yum 安装的php，所以对应的扩展配置文件在：/etc/opt/remi/php74/php.d
+
+```
+-rw-r--r--  1 root root 45761 4月   4 20:26 15-xdebug.ini
+-rw-r--r--  1 root root    50 12月 15 15:22 20-bcmath.ini
+-rw-r--r--. 1 root root    44 12月 15 15:22 20-bz2.ini
+-rw-r--r--. 1 root root    54 12月 15 15:22 20-calendar.ini
+-rw-r--r--. 1 root root    48 12月 15 15:22 20-ctype.ini
+-rw-r--r--. 1 root root    46 12月 15 15:22 20-curl.ini
+```
+
+zend_extension  目录在 /opt/remi/php74/root/usr/lib64/php/modules
+
+```
+-rwxr-xr-x. 1 root root  282488 12月 15 15:23 phar.so
+-rwxr-xr-x. 1 root root  648384 3月  25 2021 redis.so
+-rwxr-xr-x. 1 root root   58248 12月 15 15:23 simplexml.so
+-rwxr-xr-x. 1 root root   95800 12月 15 15:23 sockets.so
+-rwxr-xr-x. 1 root root   54376 12月 15 15:23 sqlite3.so
+-rwxr-xr-x  1 root root 2972440 4月  18 15:19 swoole.so
+-rwxr-xr-x. 1 root root   19840 12月 15 15:23 tokenizer.so
+-rwxr-xr-x  1 root root  361424 4月   4 20:26 xdebug.so
+-rwxr-xr-x. 1 root root   32992 12月 15 15:23 xmlreader.so
+-rwxr-xr-x. 1 root root   53800 12月 15 15:23 xml.so
+-rwxr-xr-x. 1 root root   49320 12月 15 15:23 xmlwriter.so
+-rwxr-xr-x. 1 root root   32912 12月 15 15:23 xsl.so
+-rwxr-xr-x. 1 root root   79488 10月 12 2021 zip.so
+```
+
+xdebug
+
+```
+;[xdebug]
+zend_extension ="D:/wamp64/bin/php/php7.4.26/ext/php_xdebug.dll"
+xdebug.idekey="PHPSTORM"
+xdebug.client_host=localhost
+; 端口ID,phpstorm 设置须一致
+xdebug.client_port=9010
+;开启xdebug支持，不同的mode的不同的用途，详细说明请看官方文档
+xdebug.mode = develop,debug,profile,trace ;如果要多个模式一起开启，就用`,`分隔开就行
+xdebug.profiler_append = 0
+xdebug.profiler_output_name = cachegrind.out.%p
+xdebug.start_with_request = default|yes|no|trigger ;这里与原来不同了，原来如果要开启trace或profile,用的是enable_trace,enable_profile等字段
+xdebug.trigger_value=StartProfileForMe ;这里就是原来的profile_trigger_value,trace_trigger_value
+xdebug.output_dir = /tmp ;输出文件路径，原来是output_profiler_dir,trace_dir分别设置,现在统一用这个设置就可以了
+```
+
+
+
+
+
+
+
 #### # PhpStorm 配置
 
 1. **步骤一：**配置远程的 php-cli
@@ -80,6 +164,18 @@ xdebug.remote_host="192.168.1.23"
 3. **步骤三：**配置 Servers（域名和端口与对应的 PHP Web 应用保持一致，用于web地址访问使用）
 
 <img src="../../assets/linux/practice/xdebug/20190719111222.png" alt="20190719111222.png" style="zoom:90%;" />
+
+
+
+### 问题：
+
+#### PhpStrom Specified URL is not reachable, caused by: 'Request failed with status code 404'
+
+该问题困惑了半天,一定要注意 Path to create validation script 的路径是项目的public目录, 这样才能验证成功, 一定要注意是public目录!!!
+
+<img src="../../assets/linux/practice/xdebug/2022-05-25_16-44-49.png" alt="20190719111222.png" style="zoom:90%;" />
+
+
 
 
 

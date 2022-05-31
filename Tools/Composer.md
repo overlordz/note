@@ -214,3 +214,36 @@ Check https://getcomposer.org/doc/articles/troubleshooting.md#memory-limit-error
 ```
 
 解决版本：https://learnku.com/laravel/t/27985
+
+
+
+### Composer  install 时提示 `Failed connect to api.github.com:443; Connection refused`
+
+官方文档：https://getcomposer.org/doc/articles/authentication-for-private-packages.md#github-oauth
+
+##### 处理方式一：
+
+首先进入 https://github.com/settings/tokens 点击 「Generate new token」
+
+修改 /root/.config/composer/auth.json 文件
+
+```
+// 这里的token是github生成
+token = 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
+
+{
+    "bitbucket-oauth": {},
+    "github-oauth": {"github.com":"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"},
+    "gitlab-oauth": {},
+    "gitlab-token": {},
+    "http-basic": {},
+    "bearer": {}
+}
+```
+
+##### 处理方式二：
+
+```
+composer config --global --auth github-oauth.github.com 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
+```
+
