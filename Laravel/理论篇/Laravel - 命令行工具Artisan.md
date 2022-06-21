@@ -45,8 +45,10 @@
 migrate
     创建migration文件
     php artisan make:migration create_user_table
-    执行migrate迁移
+    执行migrate迁移【所有】
     php artisan migrate
+    执行migrate迁移【指定文件】
+    php artisan migrate --path=./database/migrations/2022_06_10_000032_create_grow_plants_table.php
     
     *注意：迁移执行顺序是依据migration文件的文件名时间戳前缀来依次执行的，所以如果某个*表存在外键依赖关系，要保证被依赖的表先被migrate。
     *注意：有些时候迁移可能会出现异常，比如说“Class not found”或者“No such file or directory”，可以尝试先执行composer dump-autoload命令后再进行迁移。

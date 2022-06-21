@@ -264,7 +264,7 @@ source /etc/profile
 sudo ln -s /opt/remi/php74/root/usr/bin/php /usr/bin/php
 ```
 
-
+/opt/remi/php74/root/usr/bin
 
 ## 配置php-fpm
 

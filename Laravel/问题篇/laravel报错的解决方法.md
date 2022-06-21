@@ -55,3 +55,17 @@ $users = User::where('uid',$userId)
         ->paginate(10);
 ```
 
+
+
+
+
+#### laravel 项目连接数据库 SQLSTATE[HY000] [2002] Connection refused
+
+```
+env 文件设置：
+DB_HOST=localhost
+
+添加缓存
+php artisan config:cache
+```
+
