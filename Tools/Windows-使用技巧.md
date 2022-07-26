@@ -7,8 +7,6 @@
 > CertUtil -hashfile 文件路径 [算法]
 > 支持的算法有：MD2   MD4  MD5  SHA1  SHA256  SHA384  SHA512
 
-
-
 ### # windows常用软件一键启动
 
 ##### 1、新建一个记事本
@@ -21,6 +19,7 @@
 脚本格式： start+一个空格+""(英文,中间无空格)+一个空格+"目标程序路径"
 脚本例子：start "" "D:\Program Files\WeChat\WeChat.exe"
 ```
+
 ##### 4、保存，文件扩展名修改为.bat
 
 ##### 补充说明

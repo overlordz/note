@@ -14,6 +14,8 @@ if(empty($users)){}
 根据文档可以了解，Eloquent 已经给我们封装几个判断方法如下：
 
 ```php
+下面方法只适用list：
+    
 $users = DB::table('users')->where('id',$id)->get();
 if ($users->first()) {} 
 或

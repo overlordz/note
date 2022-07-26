@@ -1,13 +1,9 @@
 # PHPSTORM
 
-
-
 ## 风格
 
 1. 安装插件 `Material Theme UI  ` ，安装后重起软件
 2. `Tools -> Material Theme ` 中选择喜欢的样式就可以了
-
-
 
 ## 快捷键【window环境】
 
@@ -15,59 +11,56 @@
 
 全屏幕快捷键 
 
-   ```
-   Keymap>Main menu>View>Toggle Distraction Free mode 为 f11健
-   Keymap>Main menu>View>Toggle Full Screen mode 为 alt f11健
-   ```
+```
+Keymap>Main menu>View>Toggle Distraction Free mode 为 f11健
+Keymap>Main menu>View>Toggle Full Screen mode 为 alt f11健
+```
 
 #### [查询]
 
-
-| 按 Press               | 功能 Function                                          |
-| ---------------------- | ----------------------------------- |
-| Ctrl + N               | 查找类                              |
-| Ctrl + Shift + N       | 全局搜索文件 ,优先文件名匹配的文件    |
-| Ctrl + Shift + ALT + N | 查找php类名/变量名 ,js方法名/变量名, css 选择器        |
-| CIRL + B   | 找变量的来源，跳到变量申明处 (Ctrl +  鼠标单击 也可以) |
-| Ctrl + G   | 定位行，跳转行 |
-| Ctrl + F   | 在当前窗口查找文本 |
-| Ctrl + Shift + F   | 在指定路径查找文本字符 |
-| Ctrl + E   | 最近打开的文件 |
-| Ctrl + ALT←/→   | 返回上次编辑的位置 |
-| ALT + ←/→   | 切换代码视图，标签切换 |
-| ALT + ↑/↓   | 在方法间快速移动定位 |
-| Ctrl  +  '-/ + '      | 可以折叠项目中的任何代码块,包括htm中的任意nodetype=3的元素，function,或对象直接量等等。它不是选中折叠，而是自动识别折叠 |
-| Ctrl  + F12  | 文件结构弹出 类似 ALT  +  7 |
-| Ctrl + ALT + F12  | 资源管理器打开文件夹，跳转至当前文件在磁盘上的位置 |
-| Ctrl + [] |	光标移动到{}[]开头或结尾位置	|
+| 按 Press                | 功能 Function                                                             |
+| ---------------------- | ----------------------------------------------------------------------- |
+| Ctrl + N               | 查找类                                                                     |
+| Ctrl + Shift + N       | 全局搜索文件 ,优先文件名匹配的文件                                                      |
+| Ctrl + Shift + ALT + N | 查找php类名/变量名 ,js方法名/变量名, css 选择器                                         |
+| CIRL + B               | 找变量的来源，跳到变量申明处 (Ctrl +  鼠标单击 也可以)                                       |
+| Ctrl + G               | 定位行，跳转行                                                                 |
+| Ctrl + F               | 在当前窗口查找文本                                                               |
+| Ctrl + Shift + F       | 在指定路径查找文本字符                                                             |
+| Ctrl + E               | 最近打开的文件                                                                 |
+| Ctrl + ALT←/→          | 返回上次编辑的位置                                                               |
+| ALT + ←/→              | 切换代码视图，标签切换                                                             |
+| ALT + ↑/↓              | 在方法间快速移动定位                                                              |
+| Ctrl  +  '-/ + '       | 可以折叠项目中的任何代码块,包括htm中的任意nodetype=3的元素，function,或对象直接量等等。它不是选中折叠，而是自动识别折叠 |
+| Ctrl  + F12            | 文件结构弹出 类似 ALT  +  7                                                     |
+| Ctrl + ALT + F12       | 资源管理器打开文件夹，跳转至当前文件在磁盘上的位置                                               |
+| Ctrl + []              | 光标移动到{}[]开头或结尾位置                                                        |
 
 #### [编辑]
 
-| 按 Press             | 功能 Function                       |
-| -------------------- | ----------------------------------- |
-| Ctrl + Q | 快速文档查询  |
-| Ctrl + Shift + i   | 快速查看变量或方法定义源 , 也可以鼠标按住 + Ctrl    |
-| Ctrl + R     | 当前窗口替换文本   |
-| Ctrl + Shift + R    | 在指定路径替换文本 |
-| Ctrl + ALT + T   | 把选中的代码放在TRY{} IF{} ELSE{} 里 |
-| Ctrl + Shift + J   | 多行合成一行，所有多余的字符(空格，引号和加号)被去掉了 |
-| Ctrl + Shift + U   | 选中的字符大小写转换 |
-| Ctrl + W   | 块状选中代码，连续按会有其他效果 Ctrl + Shift + W 减少当前选择到以前的状态 |
-| Ctrl + Shift + []   | 直接选中块代码 = Ctrl + W 按好几下 |
-
+| 按 Press           | 功能 Function                                    |
+| ----------------- | ---------------------------------------------- |
+| Ctrl + Q          | 快速文档查询                                         |
+| Ctrl + Shift + i  | 快速查看变量或方法定义源 , 也可以鼠标按住 + Ctrl                  |
+| Ctrl + R          | 当前窗口替换文本                                       |
+| Ctrl + Shift + R  | 在指定路径替换文本                                      |
+| Ctrl + ALT + T    | 把选中的代码放在TRY{} IF{} ELSE{} 里                    |
+| Ctrl + Shift + J  | 多行合成一行，所有多余的字符(空格，引号和加号)被去掉了                   |
+| Ctrl + Shift + U  | 选中的字符大小写转换                                     |
+| Ctrl + W          | 块状选中代码，连续按会有其他效果 Ctrl + Shift + W 减少当前选择到以前的状态 |
+| Ctrl + Shift + [] | 直接选中块代码 = Ctrl + W 按好几下                        |
 
 #### [自动代码]
 
-| 按 Press             | 功能 Function                       |
-| -------------------- | ----------------------------------- |
-| Ctrl + I | 实现方法(构造函数)  |
-| Ctrl + J | 自动代码提示，自动补全    |
-| ALT + Enter     | 导入包,自动修正   |
-| Ctrl + ALT + L   | 格式化代码 |
-| Ctrl + ALT + I   | 自动缩进 |
-| Ctrl + Shift + enter   | (智能完善代码 如if()) |
-| Ctrl + P   | 方法参数提示，显示默认参数 |
-
+| 按 Press              | 功能 Function    |
+| -------------------- | -------------- |
+| Ctrl + I             | 实现方法(构造函数)     |
+| Ctrl + J             | 自动代码提示，自动补全    |
+| ALT + Enter          | 导入包,自动修正       |
+| Ctrl + ALT + L       | 格式化代码          |
+| Ctrl + ALT + I       | 自动缩进           |
+| Ctrl + Shift + enter | (智能完善代码 如if()) |
+| Ctrl + P             | 方法参数提示，显示默认参数  |
 
 ## bootstrap
 
@@ -180,8 +173,6 @@ php artisan vendor:publish --provider="Barryvdh\LaravelIdeHelper\IdeHelperServic
 php artisan config:cache
 ```
 
-
-
 ### 其他插件
 
 在 IDE 中设置中搜索插件 `Preferences | Plugins`需要安装的插件列表如下：
@@ -255,17 +246,11 @@ composer.json 配置文件管理，需要安装插件
 
 ![image-20180617171432968](../assets/tools/image-20180617171432968.png)
 
-
-
 ## 其他设置
-
-
 
 ### 取消格式化代码时 自动换行
 
 ![image-20180624194143371](../assets/tools/image-20180624194143371.png)
-
-
 
 ### 快速加符号
 
@@ -273,23 +258,17 @@ composer.json 配置文件管理，需要安装插件
 
 ![image-20180707154600462](../assets/tools/image-20180707154600462.png)
 
-
-
 ### 解决NPM变慢的问题
 
 生成 `node_modules` 目录后，加载特别慢并会卡死，解决方法如下：
 
 ![image-20180708020938479](../assets/tools/image-20180708020938479.png)
 
-
-
 ### 自动换行
 
 ```
 Preferences | Editor | General | Use soft wraps in editor
 ```
-
-
 
 ### Less
 
@@ -301,17 +280,11 @@ npm install -g less
 settings > Tools > File Watchers > less
 ```
 
-
-
 ### 注释模板修改
 
 > Settings -> Editor -> File and Code Templates 
 
-
-
 ![注释模版修改](../assets/tools/phpstorm-showdoc.png)
-
-
 
 ### Terminal 字体设置
 
