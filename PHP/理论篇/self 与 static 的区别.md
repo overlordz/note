@@ -1,7 +1,5 @@
 > PHP 官方文档：https://www.php.net/manual/zh/language.oop5.late-static-bindings.php
 
-
-
 ##### 官方解释：
 
 使用 `self::` 或者 `__CLASS__` 对当前类的静态引用，取决于定义当前方法所在的类
@@ -52,4 +50,3 @@ Car::model();
 Bmw::model();
 // 结果：I am a bmw!
 ```
-

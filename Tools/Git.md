@@ -1,6 +1,5 @@
 ## Git
 
-
 #### 安装
 
 自诞生于 2005 年以来，Git 日臻成熟完善，在高度易用的同时，仍然保留着初期设定的目标。它的速度飞快，极其适合管理大项目 。
@@ -8,7 +7,7 @@
 Git可以在windows、Mac、Linux全平台系统使用。登录  https://git-scm.com/downloads 下载你系统的Git软件并进行安装。
 
 > windows 用户我更建议安装  git for windows ，下载地址：  https://gitforwindows.org/
->
+> 
 > 包信 Git Base 、Git Gui 
 
 安装后通过以下命令查看，如果显示版本号那就是安装成功了
@@ -74,11 +73,11 @@ git config --global alias.c commit
 
 ```
 [alias]
-	a = add .
-	c = commit
-	s = status
-	l = log
-	b = branch
+    a = add .
+    c = commit
+    s = status
+    l = log
+    b = branch
 ```
 
 现在可以使用 ` git a` 实现  `git add .` 一样的效果了。
@@ -130,7 +129,7 @@ alias go="git checkout"
 4. 创建并切换分支 `git checkout -b feature/bbs`
 
 5. 合并dev分支到master
-
+   
    ```
    git checkout master
    git merge dev
@@ -195,10 +194,6 @@ git archive master --prefix='hdcms/' --format=zip > hdcms.zip
 
 ![1526214082941](../assets/tools/1526214082941.png)
 
-
-
-
-
 #### SSH
 
 **生成秘钥**
@@ -224,20 +219,16 @@ clip < ~/.ssh/id_rsa.pub
 
 点击 `New SSH key` 按钮，添加上面生成的 `id_rsa.pub` 公钥内容。
 
-
-
 **向阿里Code 添加公钥**
 
 > 阿里云Code 官网: https://code.aliyun.com
 
 ![aliyun__ssh_public_key](../assets/tools/aliyun__ssh_public_key.png)
 
-
-
 #### 关联远程
 
 1. 创建本地库并完成初始提交 
-
+   
    ```
    echo "# overlordz" >> README.md
    git init
@@ -246,36 +237,34 @@ clip < ~/.ssh/id_rsa.pub
    ```
 
 2. 添加远程仓库 
-
+   
    ```
    git remote add origin git@github.com:overlordz/note.git
    ```
 
 3. 查看远程库
-
+   
    ```
     git remote -v
    ```
 
 4. 推送数据到远程仓库
-
+   
    ```
    git push -u origin master
    ```
 
 5. 删除远程仓库关联
-
+   
    ```
    git remote rm origin
    ```
 
 6. 修改远程仓库地址
-
+   
    ```
    git remote set-url origin http://git.cloud.com/php/mp.git
    ```
-
-   
 
 > 通过 clone 克隆的仓库，本地与远程已经自动关联，上面几步都可以省略。
 
@@ -292,13 +281,13 @@ clip < ~/.ssh/id_rsa.pub
 `git push`命令用于将本地分支的更新，推送到远程主机。它的格式与`git pull`命令相似。
 
 1. 将当前分支推送到`origin`主机的对应分支(如果当前分支只有一个追踪分支 ，可省略主机名)
-
+   
    ```
    git push origin
    ```
 
 2. 使用`-u`选项指定一个默认主机 ,这样以后就可以不加任何参数直播使用`git push`。 
-
+   
    ```
    $ git push -u origin master
    ```
@@ -317,17 +306,13 @@ git remote add github git@github.com:overlordz/note.git
 
 # 提交到远程库
 git push github
-
 ```
 
 也可以创建命令一次提交到两个库(注：参考上面的命令设置章节)
 
 ```
 alias gp="git push & git push github"
-
 ```
-
-
 
 ## 自动部署
 
@@ -363,7 +348,6 @@ if ($signature) {
 
 http_response_code(404);
 ?>
-
 ```
 
 **创建站点**
@@ -385,7 +369,6 @@ http_response_code(404);
 ```
 ssh root@yourwebsite.com -p 22
 git clone https://github.com/overlordz/note.git yourwebsite.com
-
 ```
 
 **修改权限**
@@ -394,7 +377,6 @@ git clone https://github.com/overlordz/note.git yourwebsite.com
 chown -R www .
 chmod -R g+s .
 sudo -u www git pull
-
 ```
 
 现在向GitHub 推送代码后，服务器将自动执行代码拉取，自动部署功能设置完成了。
@@ -404,4 +386,3 @@ sudo -u www git pull
 #### 接口
 
 接口地址：https://api.github.com/
-

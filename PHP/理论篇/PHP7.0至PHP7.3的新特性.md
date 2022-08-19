@@ -8,7 +8,7 @@
 
 比合不能进行比较
 
-``` php
+```php
 var_dump('PHP' <=> 'Node'); // int(1)
 var_dump(123 <=> 456); // int(-1)
 var_dump(['a', 'b'] <=> ['a', 'b']); // int(0)
@@ -18,7 +18,7 @@ var_dump(['a', 'b'] <=> ['a', 'b']); // int(0)
 
 由于日常使用中存在大量同时使用三元表达式和 isset 操作。使用空合并运算符可以简化操作
 
-``` php
+```php
 // php7以前
 if (isset($_GET['a'])) {
   $a = $_GET['a'];
@@ -35,7 +35,7 @@ $a = isset($_GET['a']) ?? 'none';
 
 同时不能再使用整型，字符串，浮点型，布尔作为类的名字了
 
-``` php
+```php
 function sumOfInts(int ...$ints)
 {
     return array_sum($ints);
@@ -54,7 +54,7 @@ var_dump(add('2', 3)); // Fatal error: Argument 1 passed to add() must be of the
 
 增加了返回类型声明，类似参数类型这样更方便的控制函数的返回值在函数定义的后面加上：类型名即可
 
-``` php
+```php
 function fun(int $a): array
 {
   return $a;
@@ -66,7 +66,7 @@ fun(3); // Fatal error
 
 php7 允许新类{}创建一个匿名的对象。
 
-``` php
+```php
 // php7以前
 class Logger
 {
@@ -89,7 +89,7 @@ $util->setLogger(new class {
 
 这接受一个以 16 进制形式的 Unicode codepoint，并打印出一个双引号或 heredoc 包围的 UTF-8 编码格式的字符串。可以接受任何有效的 codepoint，并且开头的 0 是可以省略的
 
-``` php
+```php
 echo "\u{aa}"; // ª
 echo "\u{0000aa}"; // ª
 echo "\u{9999}"; // 香
@@ -99,7 +99,7 @@ echo "\u{9999}"; // 香
 
 闭包绑定简短干练的暂时绑定一个方法到对象上闭包并并用它。
 
-``` php
+```php
 class A {
     private $x = 1;
 }
@@ -120,7 +120,7 @@ echo $getX->call(new A);
 
 提供更安全的方式解包不可靠的数据。它通过白名单的方式来防止潜在的代码注入
 
-``` php
+```php
 // 将所有的对象都转换为 __PHP_Incomplete_Class 对象
 $data = unserialize($foo, ["allowed_classes" => false]);
 // 将除 MyClass 和 MyClass2 之外的所有对象都转换为 __PHP_Incomplete_Class 对象
@@ -133,7 +133,7 @@ $data = unserialize($foo, ["allowed_classes" => true]);
 
 这个类自身定义了许多静态方法用于操作多字符集的 unicode 字符。需要安装 intl 拓展
 
-``` php
+```php
 printf('%x', IntlChar::CODEPOINT_MAX);
 echo IntlChar::charName('@');
 var_dump(IntlChar::ispunct('!'));
@@ -143,7 +143,7 @@ var_dump(IntlChar::ispunct('!'));
 
 它使得在生产环境中启用断言为零成本，并且提供当断言失败时抛出特定异常的能力。以后可以使用这个这个进行断言测试
 
-``` php
+```php
 ini_set('assert.exception', 1);
 class CustomError extends AssertionError {}
 assert(false, new CustomError('Some error message'));
@@ -153,7 +153,7 @@ assert(false, new CustomError('Some error message'));
 
 从同一个命名空间下导入的类，函数，常量支持按组一次导入
 
-``` php
+```php
 // php7以前
 use app\model\A;
 use app\model\B;
@@ -165,7 +165,7 @@ use app\model{A, B};
 
 它允许在生成器函数中通过使用  _return_  语法来返回一个表达式（但是不允许返回引用值），可以通过调用  _Generator :: getReturn（）_  方法来获取生成器的返回值，但是这个方法只能在生成器完成产生工作以后调用一次。
 
-``` php
+```php
 $gen = (function() {
     yield 1;
     yield 2;
@@ -185,7 +185,7 @@ echo $gen->getReturn(), PHP_EOL;
 
 现在，只需在最外层生成其中使用 yield from，就可以把一个生成器自动委派给其他的生成器
 
-``` php
+```php
 function gen()
 {
     yield 1;
@@ -205,7 +205,7 @@ foreach (gen() as $val)
 
 #### 15. 整数除法函数 intdiv
 
-``` php
+```php
 var_dump(intdiv(10, 3)) // 3
 ```
 
@@ -213,7 +213,7 @@ var_dump(intdiv(10, 3)) // 3
 
 session_start() 可以加入一个数组覆盖 php.ini 的配置
 
-``` php
+```php
 session_start([
     'cache_limiter' => 'private',
     'read_and_close' => true,
@@ -224,7 +224,7 @@ session_start([
 
 可以使用一个关联数组来对每个正则表达式注册回调函数，正则表达式本身作为关联数组的键，而对应的回调函数就是关联数组的值
 
-``` php
+```php
 string preg_replace_callback_array(array $regexesAndCallbacks, string $input);
 $tokenStream = []; // [tokenName, lexeme] pairs
 $input = <<<'end'
@@ -279,14 +279,14 @@ preg_replace_callback_array(
 
 #### 18. 随机数，随机字符函数
 
-``` php
+```php
 string random_bytes(int length);
 int random_int(int min, int max);
 ```
 
 #### 19.定义支持定义数组
 
-``` php
+```php
 // php7+
 define('ALLOWED_IMAGE_EXTENSIONS', ['jpg', 'jpeg', 'gif', 'png']);
 ```
@@ -301,7 +301,7 @@ PHP 7 改变了大多数错误的报告方式。不同于传统（PHP 5）的错
 
 ERROR 层级结构
 
-``` php
+```php
 interface Throwable
     |- Exception implements Throwable
         |- ...
@@ -313,7 +313,7 @@ interface Throwable
             |- DivisionByZeroError extends ArithmeticError
 ```
 
-``` php
+```php
 function handler(Exception $e) { ... }
 set_exception_handler('handler');
 // 兼容 PHP 5 和 7
@@ -326,7 +326,7 @@ function handler(Throwable $e) { ... }
 
 list 会按照原来的顺序进行赋值。不再是逆序了
 
-``` php
+```php
 list($a,$b,$c) = [1, 2, 3];
 var_dump($a); // 1
 var_dump($b); // 2
@@ -337,7 +337,7 @@ var_dump($c); // 3
 
 #### 3. foreach 不再改变内部数组指针
 
-``` php
+```php
 $array = [0, 1, 2];
 foreach ($array as &$val) {
     var_dump(current($array));
@@ -354,7 +354,7 @@ int(0)
 
 #### 4. 十六进制字符串不再被认为是数字
 
-``` php
+```php
 var_dump("0x123" == "291");
 // php5
 true
@@ -368,7 +368,7 @@ false
 
 #### 6. 移除了 ASP 和脚本 PHP 标签
 
-| 开标签                    | 闭标签      |
+| 开标签                       | 闭标签         |
 | ------------------------- | ----------- |
 | `<%`                      | `%>`        |
 | `<%=`                     | `%>`        |
@@ -382,7 +382,7 @@ false
 
 参数以及返回值的类型现在可以通过在类型前加上一个问号使之允许为空。当启用这个特性时，传入的参数或者函数返回的结果要么是给定的类型，要么是空
 
-``` php
+```php
 // php5
 function($a = null){
   if ($a === null) {
@@ -407,7 +407,7 @@ fun1('1'); // 1
 
 返回值声明为 void 类型的方法要么干脆省去 return 语句。对于 void 来说，**NULL**  不是一个合法的返回值。
 
-``` php
+```php
 function fun() :void
 {
   echo "hello world";
@@ -416,7 +416,7 @@ function fun() :void
 
 #### 3. 类常量可见性
 
-``` php
+```php
 class Something
 {
     const PUBLIC_CONST_A = 1;
@@ -430,7 +430,7 @@ class Something
 
 这可以被用在参数或者返回值类型中，它代表接受数组或者实现了**Traversable 的**接口的对象。
 
-``` php
+```php
 function iterator(iterable $iter)
 {
     foreach ($iter as $val) {
@@ -443,7 +443,7 @@ function iterator(iterable $iter)
 
 一个 catch 语句块现在可以通过管道字符（_|_ ）来实现多个异常的捕获。这对于需要同时处理来自不同类的不同异常时很有用
 
-``` php
+```php
 try {
     // some code
 } catch (FirstException | SecondException $e) {
@@ -453,7 +453,7 @@ try {
 
 #### 6. 列出支持键名
 
-``` php
+```php
 $data = [
     ["id" => 1, "name" => 'Tom'],
     ["id" => 2, "name" => 'Fred'],
@@ -465,7 +465,7 @@ var_dump($id1); // 1
 
 #### 7. 字符串支持负向
 
-``` php
+```php
 $a = "hello";
 $a[-2]; // l
 ```
@@ -474,7 +474,7 @@ $a[-2]; // l
 
 Closure 新增了一个静态方法，用于将 callable 快速地转为一个 Closure 对象。
 
-``` php
+```php
 class Test
 {
     public function exposeFunction()
@@ -508,7 +508,7 @@ $privFunc('some value');
 
 #### 增加新的类型对象
 
-``` php
+```php
 function test(object $obj) : object
 {
     return new SplQueue();
@@ -520,7 +520,7 @@ test(new StdClass());
 
 扩展文件不再需要通过文件加载（Unix 下以_.so_为文件扩展名，在 Windows 下以  _.dll_  为文件扩展名）进行指定。可以在 php.ini 配置文件进行启用
 
-``` ini
+```ini
 ; ini file
 extension=php-ast
 zend_extension=opcache
@@ -530,7 +530,7 @@ zend_extension=opcache
 
 当一个抽象类继承于另外一个抽象类的时候，继承后的抽象类可以重写被继承的抽象类的抽象方法。
 
-``` php
+```php
 abstract class A
 {
     abstract function test(string $s);
@@ -554,13 +554,13 @@ Argon2 已被加入到密码散列（密码哈希）API（这些函数以  _密�
 * PDO :: PARAM_STR_CHAR
 * PDO :: ATTR_DEFAULT_STR_PARAM
 
-``` php
+```php
 $db->quote('über', PDO::PARAM_STR | PDO::PARAM_STR_NATL);
 ```
 
 #### 6. 命名分组命名空间支持尾部逗号
 
-``` php
+```php
 use Foo\Bar\{
     Foo,
     Bar,
@@ -572,19 +572,19 @@ use Foo\Bar\{
 
 #### 1. number_format 返回值
 
-``` php
+```php
 var_dump(number_format(-0.01)); // now outputs string(1) "0" instead of string(2) "-0"
 ```
 
 #### 2. get_class（）不再允许 null
 
-``` php
+```php
 var_dump(get_class(null)); // warning
 ```
 
 #### 4. 计算作用在不是可数类型将发生警告
 
-``` php
+```php
 count(1); // integers are not countable
 ```
 
@@ -592,7 +592,7 @@ count(1); // integers are not countable
 
 在之前不带引号的字符串是不存在的全局常量，转化成他们自身的字符串。现在将会产生华林。
 
-``` php
+```php
 var_dump(HEELLO);
 ```
 
@@ -614,7 +614,7 @@ is_object 作用在 **__ PHP_Incomplete_Class**
 
 把数组转对象的时候，可以访问到整型键的值。
 
-``` php
+```php
 // array to object
 $arr = [0 => 1];
 $obj = (object)$arr;
