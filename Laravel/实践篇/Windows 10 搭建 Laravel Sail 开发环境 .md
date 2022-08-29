@@ -1,10 +1,8 @@
-## 前言 
+## 前言
 
 分享自己成功搭建 Laravel Sail 环境的方法和步骤 ，虽然官方文档 描述的 比较详细，但是操作下来总会有官方文档没有出现的问题，同时也是给没有搭建过 Laravel Sail 新手的文档补充。
 
 PS： 按照我文档从头往下操作，成功率可能达到 **99.999%**。
-
-
 
 ## #1 Window 系统
 
@@ -32,8 +30,6 @@ wsl --set-default-version 2
 WSL 2 需要更新其内核组件。有关信息，请访问 https://aka.ms/wsl2kernel
 ```
 
-
-
 ## #2 安装软件
 
 #### 安装 Windows Terminal
@@ -44,19 +40,13 @@ WSL 2 需要更新其内核组件。有关信息，请访问 https://aka.ms/wsl2
 
 先下好，后面我再讲如何使用。
 
-
-
 <img src="../../assets/laravel/practice/KCVf5cqL2I.png" />
-
-
 
 #### 下载 VSCode
 
 打开 [code.visualstudio.com/download](https://code.visualstudio.com/download) ，选择 Windows 版本的 VSCode 进行下载并安装，此处不再赘述。
 
 先安装好，后面我再讲如何使用。
-
-
 
 #### 安装 Ubuntu
 
@@ -66,21 +56,15 @@ WSL 2 需要更新其内核组件。有关信息，请访问 https://aka.ms/wsl2
 
 <img src="../../assets/laravel/practice/JfVRI4pCXa.png" />
 
-
-
 在安装过程中输入密码即可完成 Ubuntu 子系统的安装 ，这个 Ubuntu 为当前 Windows 系统的子系统，接下来我们的 Docker 会基于此系统运行。
 
 打开 `Windows Terminal` ，就会看到我们安装的系统
 
 <img src="../../assets/laravel/practice/20210516154959.png" />
 
-
-
 在系统里面， /mnt/ 映射 window 的 C、D盘
 
 <img src="../../assets/laravel/practice/20210516155812.png" />
-
-
 
 #### 安装 Docker Desktop
 
@@ -94,13 +78,9 @@ WSL 2 需要更新其内核组件。有关信息，请访问 https://aka.ms/wsl2
 
 <img src="../../assets/laravel/practice/20210516160356.png" />
 
-
-
 同时这个地方也需要设置，选择我们上一步安装的 Ubuntu 系统，然后点击右下方的按钮应用修改：
 
 <img src="../../assets/laravel/practice/20210516160459.png" />
-
-
 
 ##### 3.Docker Hub 镜像加速
 
@@ -112,7 +92,6 @@ WSL 2 需要更新其内核组件。有关信息，请访问 https://aka.ms/wsl2
 
 - 百度云加速器 https://mirror.baidubce.com
 
-
 **由于镜像服务可能出现宕机，建议同时配置多个镜像。各个镜像站测试结果请到** [**docker-practice/docker-registry-cn-mirror-test**](https://github.com/docker-practice/docker-registry-cn-mirror-test/actions) **查看。**
 
 我们以 [网易云](https://www.163yun.com/) 镜像服务 `https://hub-mirror.c.163.com` 为例进行介绍。
@@ -123,11 +102,7 @@ WSL 2 需要更新其内核组件。有关信息，请访问 https://aka.ms/wsl2
 
 最后点击 **Apply & Restart** ，进行重启，一般需要耗费一两分钟。
 
-
-
 ## #3 创建测试项目
-
-
 
 **Ubuntu 作为 Windows 子系统，可以访问到主系统下的硬盘。**
 
@@ -150,8 +125,6 @@ $ curl -s https://laravel.build/example-app | bash
 最终创建成功的界面：
 
 <img src="../../assets/laravel/practice/20210507_224556.png" />
-
-
 
 Windows Terminal 工具很好的集成了 VSCode，我们可以在命令行中直接打开编辑器：
 
@@ -211,8 +184,6 @@ https://launchpad.proxy.ustclug.org
 
 这是中国科学技术大学开源软件提供的镜像。
 
-
-
 #### 3.下载 Composer 可执行文件
 
 在 vendor/laravel/sail/runtimes/8.0/Dockerfile 文件中，搜索以下这一行：
@@ -241,8 +212,6 @@ Node 二进制文件下载是以下这一行代码：
 
 目前没有好的加速通道，安装时可能会卡住这里，多尝试几次。
 
-
-
 #### 5.运行容器
 
 在项目的根目录下，执行以下命令：
@@ -257,8 +226,6 @@ $ ./vendor/bin/sail up
 
 <img src="../../assets/laravel/practice/20210516164149.png" />
 
-
-
 此时你可以 `ctrl+c` 中断运行，再次运行时，可以使用 `-d` 参数让 `sail up` 命令在后台运行：
 
 ```
@@ -271,12 +238,10 @@ $ ./vendor/bin/sail up
 
 <img src="../../assets/laravel/practice/20210516164323.png" />
 
-
-
 ## #4 问题处理
 
 > failed to fetch http://......  
->
+> 
 > ERROR: Service 'laravel.test' failed to build
 
 原因：镜像源的问题，**要更换镜像源**。
@@ -302,8 +267,6 @@ deb http://mirrors.ustc.edu.cn/ubuntu/ focal-backports main restricted universe 
 deb-src http://mirrors.ustc.edu.cn/ubuntu/ focal-backports main restricted universe multiverse
 ```
 
-
-
 > Ports are not available: listen tcp 0.0.0.0:80: bind: An attempt was made to access a socket in a way forbidden by its access permissions.
 
 原因：Window 10 中 80 端口被占用了，一般是 IIS 占用
@@ -314,8 +277,6 @@ deb-src http://mirrors.ustc.edu.cn/ubuntu/ focal-backports main restricted unive
 
 2. 找到 **World Wide Web Publishing Service** ，双击打开后,将启动类型改为**手动,**更改服务状态为 “**停止**”
 
-
-
 #### 提示:[WSL2-参考的对象类型不支持尝试的操作。](https://www.cnblogs.com/fanqisoft/p/13028976.html)
 
 在管理员模式下运行命令后重启即可
@@ -323,8 +284,6 @@ deb-src http://mirrors.ustc.edu.cn/ubuntu/ focal-backports main restricted unive
 ```
 netsh winsock reset
 ```
-
-
 
 **参考资料：**
 

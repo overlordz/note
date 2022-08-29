@@ -27,17 +27,13 @@ docker run -dit \
 
 如果发现有些没有bash就直接  /bin/sh
 
-
-
 第二次直接启动docker
 
 docker start lnmp
 
-
 curl -s https://laravel.build/laravel-koala | bash
 
 composer create-project laravel/laravel laravel-koala
-
 
 Bug 处理：
 
@@ -48,7 +44,6 @@ Bug 处理：
 1、清除mysql 下的所有文件
 2、/var/log/mysqld.log 赋予权限:chmod 777 mysqld.log
 ```
-
 
 显示临时密码：
 
@@ -76,10 +71,6 @@ grant all privileges on *.* to 'koala'@'%' identified by 'koala123' with grant o
 
 flush privileges;
 
-
-
-
-
 #### Windows 10如何给已经启动的Docker容器添加或者修改端口映射（通过修改配置文件实现）
 
 > 参考文档链接：https://www.wuleba.com/555.html
@@ -93,8 +84,6 @@ Linux 下容器配置文件在这个路径：/var/lib/docker/containers/[hash_of
 hash_of_the_container 可以通过 docker inspect 容器名字 来查看，一般都是 Docker 容器ID 开头。
 
 > docker inspect 79ae4d783f8a | grep Id
-
-
 
 这些文件不是挂在本地目录，而是挂在 Network 目录下。反正你们打开我的电脑，然后在地址栏输入：\\wsl$\docker-desktop-data\version-pack-data\community\docker\containers\   就可以打开了。
 
@@ -137,8 +126,6 @@ hash_of_the_container 可以通过 docker inspect 容器名字 来查看，一�
     },
 ```
 
-
-
 **修改 config.v2.son 配置文件：**
 
 ```
@@ -175,7 +162,5 @@ hash_of_the_container 可以通过 docker inspect 容器名字 来查看，一�
             ]
         },
 ```
-
-
 
 修改完毕之后，要重启整个Docker服务，不是直接去Docker Desktop重启 Container 哦（如果你不小心启动了 Container  ，上面的配置会被还原，请你再改一次，然后这次就不要忘记 Restart Docker 服务了），在系统右下角使用 `Docker Desktop` 中restart 服务  即可正常使用~~
